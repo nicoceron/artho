@@ -1,48 +1,71 @@
 ---
-import UiIcon from './UiIcon.astro';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL as string | undefined;
+const appUrl = import.meta.env.PUBLIC_APP_URL as string | undefined;
 ---
+
 <footer class="site-footer">
   <div class="footer-inner shell">
     <div class="footer-main">
-    <div class="footer-brand">
-      <a href="/" aria-label="Artho home">
-        <img src="/assets/framerusercontent.com/images/TjOTTTzduiVl6DqFs7S2fKH8qI8.svg" alt="Artho" />
-      </a>
-      <p>Your smart partner in modern<br />financial management.</p>
-      <div class="socials" aria-label="Social media">
-        <a href="https://linkedin.com" rel="noopener" aria-label="LinkedIn"><UiIcon name="linkedin" size={16} /></a>
-        <a href="https://instagram.com" rel="noopener" aria-label="Instagram"><UiIcon name="instagram" size={16} /></a>
-        <a href="https://x.com" rel="noopener" aria-label="X"><UiIcon name="x" size={16} /></a>
-        <a href="https://youtube.com" rel="noopener" aria-label="YouTube"><UiIcon name="youtube" size={16} /></a>
+      <div class="footer-brand">
+        <a href="/" aria-label="Malvavisco home" style="width:auto;height:auto;white-space:nowrap">
+          <span class="malvavisco-wordmark">malvavisco<span aria-hidden="true">.</span></span>
+        </a>
+        <p>Makers of LodgeOps, calm administration software for lodges.</p>
+        <p class="brand-note">Kinder stays, wilder days.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <p class="footer-title">LodgeOps</p>
+          <a href="/">Home</a>
+          <a href="/features">Product</a>
+          <a href="/pricing">For Lodges</a>
+          <a href="/contact">Request a Demo</a>
+          {appUrl && <a href={appUrl}>Staff Sign In</a>}
+        </div>
+
+        <div class="footer-column">
+          <p class="footer-title">Resources</p>
+          <a href="/blog">Guides</a>
+          <a href="/faq">Questions</a>
+          <a href="/about">About Malvavisco</a>
+          <a href="/legal/terms-of-service">Website Terms</a>
+          <a href="/legal/privacy-policy">Website Privacy</a>
+        </div>
+
+        <div class="footer-column contact-column">
+          <p class="footer-title">Talk With Us</p>
+          <p><a href="/contact">Tell us about your lodge</a></p>
+          {contactEmail && <p><span>Email:</span> <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>}
+        </div>
       </div>
     </div>
-
-    <div class="footer-links">
-    <div class="footer-column">
-      <p class="footer-title">Quick Links</p>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/features">Features</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/contact">Contact</a>
-    </div>
-
-    <div class="footer-column">
-      <p class="footer-title">Resources</p>
-      <a href="/blog">Blog</a>
-      <a href="/faq">FAQ</a>
-      <a href="/legal/terms-of-service">Terms of Service</a>
-      <a href="/legal/privacy-policy">Privacy Policy</a>
-    </div>
-
-    <div class="footer-column contact-column">
-      <p class="footer-title">Contact Us</p>
-      <p><span>Email:</span> <a href="mailto:support@artho.com">support@artho.com</a></p>
-      <p><span>Phone:</span> <a href="tel:18001234567">1-800-123-4567</a></p>
-    </div>
-
-    </div>
-    </div>
-    <img class="footer-watermark" src="/assets/framerusercontent.com/images/qiEBA010TcHKdsaEhXRtCVKgC6A.svg" alt="" aria-hidden="true" />
+    <div class="footer-watermark" aria-hidden="true">malvavisco.</div>
   </div>
 </footer>
+
+<style>
+  .malvavisco-wordmark {
+    display: inline-block;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.07em;
+    line-height: 1.2;
+  }
+  .malvavisco-wordmark span,
+  .brand-note { color: #d1f44b !important; }
+  .brand-note { margin-top: 16px; }
+  .footer-watermark {
+    width: 100%;
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #fff;
+    font-size: clamp(70px, 11vw, 165px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.09em;
+    opacity: .11;
+  }
+</style>

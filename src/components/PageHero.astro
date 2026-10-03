@@ -1,7 +1,7 @@
 ---
 import Button from "./Button.astro";
 import CheckList from "./CheckList.astro";
-import { checkBenefits } from "../data/site";
+import { malvaviscoBrand } from "../data/malvavisco";
 
 interface Props {
   breadcrumb: string;
@@ -25,16 +25,16 @@ const { breadcrumb, title, description, images = [], compact = false, pageClass,
       {!compact && (
         <>
           <div class="button-row">
-            <Button href="/pricing">Start Free Trial <span class="button-arrow">→</span></Button>
-            <Button href="/contact" variant="outline">Book a Demo</Button>
+            <Button href="/contact">Request a demo <span class="button-arrow">→</span></Button>
+            <Button href="/features" variant="outline">Explore the product</Button>
           </div>
-          <CheckList items={checkBenefits} compact />
+          <CheckList items={[...malvaviscoBrand.highlights]} compact />
         </>
       )}
     </div>
     {images.length > 0 && (
       <div class="page-hero-collage" data-reveal={reveal ? "" : undefined}>
-        {images.map((src) => <img src={src} alt="Artho team collaborating" />)}
+        {images.map((src) => <img src={src} alt="Malvavisco product and lodge operations preview" />)}
       </div>
     )}
   </div>

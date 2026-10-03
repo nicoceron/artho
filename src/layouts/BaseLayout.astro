@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "../styles/source-parity.css";
+import "../styles/malvavisco.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -8,17 +9,18 @@ interface Props {
   title?: string;
   description?: string;
   noFooter?: boolean;
+  noIndex?: boolean;
 }
 
 const {
-  title = "Artho - Financial & SAAS Website",
-  description = "Artho is a modern, high-converting Framer template for financial and SaaS websites. Fully responsive, SEO-optimized, and easy to customize, it’s built to showcase your product, boost trust, and drive conversions—no code needed.",
+  title = "LodgeOps by Malvavisco — A calmer way to run your lodge",
+  description = "LodgeOps by Malvavisco brings bookings, rooms, guides and gear, kitchen work, payments, and reports into one workspace for lodges.",
   noFooter = false,
+  noIndex = false,
 } = Astro.props;
 
-const favicon = "/assets/framerusercontent.com/images/6aCMXugoSOTvg8kjBjxwBjUSuk.svg";
-const touchIcon = "/assets/framerusercontent.com/images/b2N0sqU6j5UzPlYkvVecLH8k1k8.png";
-const socialImage = "/assets/framerusercontent.com/images/ot8Pc32nYMOY1TWLSFXFE0AdEI.png";
+const favicon = "/favicon.svg";
+const socialImage = "/og.jpg";
 const pagePath = Astro.url.pathname === "/" ? "/" : `${Astro.url.pathname.replace(/\/$/, "")}/`;
 const canonical = Astro.site ? new URL(pagePath, Astro.site).href : undefined;
 const socialImageUrl = Astro.site ? new URL(socialImage, Astro.site).href : socialImage;
@@ -30,11 +32,10 @@ const socialImageUrl = Astro.site ? new URL(socialImage, Astro.site).href : soci
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <link rel="icon" href={favicon} media="(prefers-color-scheme: light)" />
-    <link rel="icon" href={favicon} media="(prefers-color-scheme: dark)" />
-    <link rel="apple-touch-icon" href={touchIcon} />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
     <title>{title}</title>
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Malvavisco" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImageUrl} />
@@ -44,7 +45,7 @@ const socialImageUrl = Astro.site ? new URL(socialImage, Astro.site).href : soci
     <meta name="twitter:image" content={socialImageUrl} />
     {canonical && <link rel="canonical" href={canonical} />}
     {canonical && <meta property="og:url" content={canonical} />}
-    <meta name="robots" content="max-image-preview:large" />
+    <meta name="robots" content={noIndex ? "noindex" : "max-image-preview:large"} />
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>

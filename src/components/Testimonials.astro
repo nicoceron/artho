@@ -1,39 +1,80 @@
 ---
 import SectionHeader from "./SectionHeader.astro";
-import UiIcon from './UiIcon.astro';
-import { image, testimonials } from "../data/site";
 
-const ratingAvatars = [
-  image("K6cUNifhQFa6qEX3kqNwfqMkiY.jpg"),
-  image("LMLNF0vU5ySMfVRIW3JtFu5iB78.jpg"),
-  image("o5Afy3fkKnGfC4mJ0Y8DK0XqJDY.jpg"),
-];
+const roleCards = [
+  {
+    text: "Plan rooms night by night. Availability and capacity are checked again when the booking is saved.",
+    role: "Front desk",
+    detail: "Bookings and guests",
+    mark: "F",
+  },
+  {
+    text: "Sell the activity, then schedule the guide and gear for an actual time without charging the guest twice.",
+    role: "Operations",
+    detail: "Guides and assets",
+    mark: "O",
+  },
+  {
+    text: "Booking-linked orders become preparation tickets, with dietary notes available to the kitchen.",
+    role: "Kitchen",
+    detail: "Tickets and meals",
+    mark: "K",
+  },
+  {
+    text: "Keep charges and payments on the stay, then print a numbered invoice and inspect the audit trail.",
+    role: "Finance",
+    detail: "Folio and reporting",
+    mark: "£",
+  },
+] as const;
 ---
 
 <section class="testimonials-section section-pad">
   <div class="shell">
     <div class="testimonial-header">
-      <SectionHeader align="left" eyebrow="What Our Users Say" title="Trusted by Teams Who Value Simplicity and Results" />
+      <SectionHeader align="left" eyebrow="Built for the Whole Team" title="One Stay, Every Team in Step" />
       <div class="rating-summary">
-        <p>See how our platform helps businesses save time, gain clarity, and grow with confidence.</p>
-        <div><span class="rating-score"><span class="stars">{Array.from({ length:5 }).map(() => <UiIcon name="star" size={16} />)}</span><strong>4.7<small>/5.0</small></strong></span><span class="avatar-stack">{ratingAvatars.map((avatar) => <img src={avatar} alt="" />)}</span><strong class="customer-count">875+<small>Happy Customer</small></strong></div>
+        <p>From the front desk to the kitchen, LodgeOps keeps the work around a stay in one place.</p>
+        <div><span class="rating-score"><strong>3</strong><small>Calendar views</small></span><span class="avatar-stack" aria-hidden="true"><span class="role-dot">F</span><span class="role-dot">O</span><span class="role-dot">K</span></span><strong class="customer-count">1<small>Shared booking</small></strong></div>
       </div>
     </div>
     <div class="testimonial-grid" data-motion-grid>
       <div class="testimonial-column">
-      <article class="quote-card quote-one" data-reveal tabindex="0"><p>{testimonials[0].quote}</p><div class="person"><img src={testimonials[0].avatar} alt="" /><span><b>{testimonials[0].name}</b><small>{testimonials[0].role}</small></span></div></article>
-      <div class="testimonial-pair">
-      <article class="quote-card quote-two" data-reveal tabindex="0"><p>{testimonials[1].quote}</p><div class="person"><img src={testimonials[1].avatar} alt="" /><span><b>{testimonials[1].name}</b><small>{testimonials[1].role}</small></span></div></article>
-      <article class="metric-card metric-seventy" data-reveal tabindex="0"><img src={image("BvopH4QwwVK2x02fTP4y8Nr4sm8.jpg")} alt="Financial reporting workspace" /><div class="metric-body"><strong data-count-value="70" data-count-suffix="%">70%</strong><h3>Less Time Spent on Manual Reporting</h3></div></article>
-      </div>
+        <article class="quote-card quote-one" data-reveal tabindex="0"><p>{roleCards[0].text}</p><div class="person"><span class="role-dot">{roleCards[0].mark}</span><span><b>{roleCards[0].role}</b><small>{roleCards[0].detail}</small></span></div></article>
+        <div class="testimonial-pair">
+          <article class="quote-card quote-two" data-reveal tabindex="0"><p>{roleCards[1].text}</p><div class="person"><span class="role-dot">{roleCards[1].mark}</span><span><b>{roleCards[1].role}</b><small>{roleCards[1].detail}</small></span></div></article>
+          <article class="metric-card metric-seventy" data-reveal tabindex="0"><img src="/product/calendar.webp" alt="Sample LodgeOps Places calendar" loading="lazy" /><div class="metric-body"><strong data-count-value="3">3</strong><h3>Places, Crew and Assets Calendars</h3></div></article>
+        </div>
       </div>
       <div class="testimonial-column">
-      <div class="testimonial-pair">
-      <article class="quote-card quote-three" data-reveal tabindex="0"><p>{testimonials[2].quote}</p><div class="person"><img src={testimonials[2].avatar} alt="" /><span><b>{testimonials[2].name}</b><small>{testimonials[2].role}</small></span></div></article>
-      <article class="metric-card metric-satisfaction" data-reveal tabindex="0"><img src={image("myMtB6AwC3gKJpLrKk2cxSDGiEc.jpg")} alt="Customer satisfaction" /><div class="metric-body"><strong data-count-value="98" data-count-suffix="%">98%</strong><h3>User Satisfaction</h3><p>Highly rated for simplicity, speed, and financial clarity.</p></div></article>
-      </div>
-      <article class="quote-card quote-four" data-reveal tabindex="0"><p>{testimonials[3].quote}</p><div class="person"><img src={testimonials[3].avatar} alt="" /><span><b>{testimonials[3].name}</b><small>{testimonials[3].role}</small></span></div></article>
+        <div class="testimonial-pair">
+          <article class="quote-card quote-three" data-reveal tabindex="0"><p>{roleCards[2].text}</p><div class="person"><span class="role-dot">{roleCards[2].mark}</span><span><b>{roleCards[2].role}</b><small>{roleCards[2].detail}</small></span></div></article>
+          <article class="metric-card metric-satisfaction" data-reveal tabindex="0"><img src="/product/operations-board.webp" alt="Sample LodgeOps daily operations board" loading="lazy" /><div class="metric-body"><strong data-count-value="11">11</strong><h3>Staff Roles</h3><p>Menus follow each role; the server enforces access too.</p></div></article>
+        </div>
+        <article class="quote-card quote-four" data-reveal tabindex="0"><p>{roleCards[3].text}</p><div class="person"><span class="role-dot">{roleCards[3].mark}</span><span><b>{roleCards[3].role}</b><small>{roleCards[3].detail}</small></span></div></article>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .avatar-stack { align-items: center; }
+  .role-dot {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #d1f44b;
+    color: #0b0b0b;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .avatar-stack .role-dot { margin-left: -9px; }
+  .person .role-dot { margin: 0; }
+  .rating-score { width: 100px; }
+  .rating-summary .rating-score small { font-size: 12px; line-height: 1.2; }
+</style>

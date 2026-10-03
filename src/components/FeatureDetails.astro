@@ -1,16 +1,15 @@
 ---
 import Badge from './Badge.astro';
 import UiIcon from './UiIcon.astro';
-import { financeFeatures } from "../data/site";
-import { responsiveImage } from "../data/responsive-images";
+import { featureDetails } from "../data/malvavisco";
 ---
 
 <section class="feature-details section-pad">
   <div class="shell feature-detail-list">
-    {financeFeatures.map((feature, index) => (
+    {featureDetails.map((feature, index) => (
       <article class:list={["feature-detail", { reverse: index % 2 === 1 }]}>
         <div class="feature-detail-media">
-          <img {...responsiveImage(feature.image)} sizes="(min-width: 1200px) 575px, (min-width: 810px) calc(100vw - 60px), calc(100vw - 40px)" alt="" />
+          <img src={feature.image} alt={feature.alt} width="1760" height="1100" loading="lazy" />
         </div>
         <div class="feature-detail-copy">
           <Badge label={feature.eyebrow} />

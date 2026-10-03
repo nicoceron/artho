@@ -10,6 +10,6 @@ export function getStaticPaths() {
 const { article } = Astro.props;
 ---
 
-<BaseLayout title={`${article.title} - My Framer Site`}>
+<BaseLayout title={`${article.title} — Malvavisco`} description={article.excerpt}>
   <BlogArticle article={article} />
 </BaseLayout>

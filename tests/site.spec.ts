@@ -55,7 +55,7 @@ test("tablet navigation uses the captured compact header breakpoint", async ({ p
   await expect(page.locator("[data-menu-toggle]")).toBeVisible();
 });
 
-test("mobile workflow preserves all four captured steps and panels", async ({ page }) => {
+test("mobile workflow keeps all four LodgeOps steps and panels", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
   await expect(page.locator(".workflow-tabs")).toBeHidden();
@@ -78,21 +78,22 @@ test("resource menu, workflow tabs, and keyboard arrows work", async ({ page }) 
   await expect(page.locator('[data-resource-menu] a').first()).toBeFocused();
   await page.locator('[data-resource-menu] a').first().press('Escape');
   await expect(resources).toBeFocused();
-  await page.getByRole("tab", { name: /Connect Your Financial Tools/ }).click();
+  await page.getByRole("tab", { name: /Build the stay/ }).click();
   await expect(page.locator("[data-panel='card']")).toBeVisible();
-  await page.getByRole("tab", { name: /Connect Your Financial Tools/ }).press("ArrowRight");
+  await page.getByRole("tab", { name: /Build the stay/ }).press("ArrowRight");
   await expect(page.locator("[data-panel='dashboard']")).toBeVisible();
 });
 
-test("pricing toggle switches all displayed billing values", async ({ page }) => {
+test("for-lodges page explains the demo path without invented subscription prices", async ({ page }) => {
   await page.goto("/pricing");
-  await page.getByRole("button", { name: "Yearly" }).click();
-  const prices = await page.locator("[data-monthly-price]").allTextContents();
-  expect(prices).toEqual(["$0", "$290", "$790"]);
-  await expect(page.locator("[data-billing-period]").first()).toHaveText("/year");
+  await expect(page.getByRole("heading", { name: "See How LodgeOps Fits Your Lodge" })).toBeVisible();
+  await expect(page.locator(".pricing-card")).toHaveCount(3);
+  await expect(page.locator(".pricing-card .price strong")).toHaveText(["01", "02", "03"]);
+  await expect(page.locator("[data-billing-toggle]")).toHaveCount(0);
+  await expect(page.locator(".pricing-card a[href='/contact']")).toHaveCount(3);
 });
 
-test("FAQ hash navigation smooth-scrolls through every source section", async ({ page }) => {
+test("FAQ hash navigation smooth-scrolls through every LodgeOps section", async ({ page }) => {
   await page.goto("/faq");
   await page.evaluate(() => document.fonts.ready);
   await expect(page.locator("[data-scroll-section]")).toHaveCount(5);
@@ -102,9 +103,9 @@ test("FAQ hash navigation smooth-scrolls through every source section", async ({
 
   const secondLink = page.locator("[data-scroll-link]").nth(1);
   const scrollSamples = await page.evaluate(async () => {
-    const link = document.querySelector<HTMLAnchorElement>("a[href='#billing-subscriptions']");
-    const section = document.querySelector<HTMLElement>("#billing-subscriptions");
-    if (!link || !section) throw new Error("Missing FAQ source anchors");
+    const link = document.querySelector<HTMLAnchorElement>("a[href='#bookings-calendar']");
+    const section = document.querySelector<HTMLElement>("#bookings-calendar");
+    if (!link || !section) throw new Error("Missing FAQ anchors");
     const target = Math.min(section.getBoundingClientRect().top + window.scrollY, document.documentElement.scrollHeight - window.innerHeight);
     link.click();
     const immediate = window.scrollY;
@@ -116,18 +117,18 @@ test("FAQ hash navigation smooth-scrolls through every source section", async ({
   expect(scrollSamples.immediate).toBeLessThan(scrollSamples.underway);
   expect(scrollSamples.underway).toBeLessThan(scrollSamples.settled);
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeCloseTo(scrollSamples.target, 0);
-  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("#billing-subscriptions");
+  await expect.poll(() => page.evaluate(() => window.location.hash)).toBe("#bookings-calendar");
   await expect(secondLink).toHaveAttribute("aria-current", "location");
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
 
-  const questions = page.locator("#billing-subscriptions details");
+  const questions = page.locator("#bookings-calendar details");
   await questions.nth(0).locator("summary").click();
   await questions.nth(1).locator("summary").click();
   await expect(questions.nth(0)).not.toHaveAttribute("open", "");
   await expect(questions.nth(1)).toHaveAttribute("open", "");
 });
 
-test("page wheel scrolling uses the shared Lenis smoothing from the reference port", async ({ page }) => {
+test("page wheel scrolling keeps the shared Lenis smoothing", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("html")).toHaveClass(/lenis/);
   await expect.poll(() => page.evaluate(() => (window as Window & { lenisVersion?: string }).lenisVersion)).toBe("1.1.2");
@@ -145,28 +146,54 @@ test("page wheel scrolling uses the shared Lenis smoothing from the reference po
   expect(settled).toBeGreaterThan(850);
 });
 
-test("about timeline carousel advances", async ({ page }) => {
+test("about workflow carousel advances", async ({ page }) => {
   await page.goto("/about");
   const track = page.locator("[data-carousel-track]");
   const expected = await track.evaluate((element) => element.scrollWidth - element.clientWidth);
-  await page.getByRole("button", { name: "Next timeline item" }).click();
+  await page.getByRole("button", { name: "Next workflow item" }).click();
   await expect.poll(() => track.evaluate((element) => element.scrollLeft)).toBeCloseTo(expected, 0);
 });
 
-test("contact form validates and reaches its native demo completion state", async ({ page }) => {
+test("unconfigured demo form fails closed, then a configured endpoint receives a valid request", async ({ page }) => {
   await page.goto("/contact");
-  await page.locator("input[name='name']").fill("Artho QA");
+  const button = page.getByRole("button", { name: "Request a Demo" }).last();
+  await expect(button).toBeDisabled();
+  await expect(page.getByRole("status")).toHaveText("Demo requests are not connected yet. Please check back soon.");
+
+  let posted: Record<string, unknown> | undefined;
+  await page.route("**/mock-lead", async (route) => {
+    posted = route.request().postDataJSON() as Record<string, unknown>;
+    await route.fulfill({ status: 200, contentType: "application/json", body: '{"ok":true}' });
+  });
+  await page.locator("[data-demo-form]").evaluate((form) => {
+    (form as HTMLFormElement).dataset.endpoint = "/mock-lead";
+    (form.querySelector('button[type="submit"]') as HTMLButtonElement).disabled = false;
+  });
+  await button.click();
+  await expect(page.getByRole("status")).toHaveText("Please add your name, a valid email and your lodge’s name.");
+  await page.locator("input[name='name']").fill("Demo Guest");
   await page.locator("input[name='email']").fill("qa@example.com");
-  await page.locator("input[name='subject']").fill("Native port verification");
-  await page.locator("textarea[name='message']").fill("Testing the complete contact flow.");
-  await page.getByRole("button", { name: "Submit" }).click();
-  await expect(page.locator(".form-status")).toHaveText("Demo form only — no message was sent.");
+  await page.locator("input[name='lodge']").fill("Sample Lodge");
+  await page.locator("select[name='rooms']").selectOption("6–15");
+  await page.locator("textarea[name='message']").fill("Show us kitchen and booking workflows.");
+  await button.click();
+  await expect(page.getByRole("status")).toHaveText("Request submitted. We’ll use the email you provided to arrange a walkthrough.");
+  expect(posted).toMatchObject({ name: "Demo Guest", email: "qa@example.com", lodge: "Sample Lodge", rooms: "6–15", message: "Show us kitchen and booking workflows." });
 });
 
-test("article pages preserve source-specific related stories", async ({ page }) => {
-  await page.goto("/blog/digital-transformation-navigating-the-new-normal");
+test("guide pages link to distinct LodgeOps workflows", async ({ page }) => {
+  await page.goto(`/blog/${articles[0].slug}`);
   const related = page.locator(".related-grid .blog-card h2");
   await expect(related).toHaveCount(2);
-  await expect(related.nth(0)).toHaveText("Mastering Time Management: Tips for Busy Professionals");
-  await expect(related.nth(1)).toHaveText("The Art of Effective Communication in the Workplace");
+  const titles = await related.allTextContents();
+  expect(new Set(titles).size).toBe(2);
+  await expect(page.locator(".related-grid .blog-card a[href^='/blog/']").first()).not.toHaveAttribute("href", `/blog/${articles[0].slug}`);
+});
+
+test("unapproved website policy drafts are excluded from indexing", async ({ page }) => {
+  for (const route of ["/legal/privacy-policy", "/legal/terms-of-service"]) {
+    await page.goto(route);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex");
+    await expect(page.getByText("Draft for review", { exact: false })).toBeVisible();
+  }
 });

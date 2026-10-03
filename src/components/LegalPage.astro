@@ -1,12 +1,12 @@
 ---
 interface Section { title: string; paragraphs?: string[]; items?: string[] }
-interface Props { title: string; updated: string; sections: Section[] }
-const { title, updated, sections } = Astro.props;
+interface Props { title: string; updated: string; updatedISO: string; sections: Section[]; reviewNote?: string }
+const { title, updated, updatedISO, sections, reviewNote } = Astro.props;
 ---
 
 <article class="legal-page section-pad">
   <div class="legal-shell shell">
-    <header><h1>{title}</h1><p>Last Updated : <time>{updated}</time></p></header>
+    <header><h1>{title}</h1><p>Prepared <time datetime={updatedISO}>{updated}</time></p>{reviewNote && <p class="legal-review-note">{reviewNote}</p>}</header>
     <div class="legal-content">
       {sections.map((section) => (
         <section><h2>{section.title}</h2>{section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li>{item.includes(': ') ? <><strong>{item.slice(0,item.indexOf(': ')+1)}</strong>{item.slice(item.indexOf(': ')+1)}</> : item}</li>)}</ul>}</section>
@@ -14,3 +14,17 @@ const { title, updated, sections } = Astro.props;
     </div>
   </div>
 </article>
+
+<style>
+  .legal-review-note {
+    display: inline-block;
+    max-width: 720px;
+    margin-top: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #fff4d6;
+    color: #46370b;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+</style>

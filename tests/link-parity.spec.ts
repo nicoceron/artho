@@ -1,39 +1,42 @@
-import { expect, test } from "@playwright/test";
-import fs from "node:fs";
-import path from "node:path";
-import { parse } from "csv-parse/sync";
+import { expect, test } from '@playwright/test';
+import fs from 'node:fs';
+import path from 'node:path';
 
-type TrackerRow = { category: string; route: string; detail: string };
-const tracker = parse(
-  fs.readFileSync(path.resolve(import.meta.dirname, "../ASTRO_MIGRATION_TRACKER.csv"), "utf8"),
-  { columns: true, skip_empty_lines: true },
-) as TrackerRow[];
+const articles = JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, '../src/data/articles.json'), 'utf8')) as Array<{ slug: string }>;
 
-function destination(href: string, route: string): string {
-  if (href.startsWith("tel:")) return `tel:${href.slice(4).replace(/\D/g, "")}`;
-  const url = new URL(href, new URL(route, "https://artho.framer.website/"));
-  if (url.hostname === "artho.framer.website") return `${url.pathname.replace(/\/$/, "") || "/"}${url.hash}`;
-  return url.href;
-}
+const routes = ['/', '/about', '/features', '/pricing', '/contact', '/faq', '/blog',
+  '/legal/privacy-policy', '/legal/terms-of-service', ...articles.map((article) => `/blog/${article.slug}`)];
 
-const sourceLinks = new Map<string, Set<string>>();
-for (const row of tracker) {
-  if (row.category !== "observed-interaction") continue;
-  const { href } = JSON.parse(row.detail) as { href?: string };
-  if (!href) continue;
-  const expected = sourceLinks.get(row.route) ?? new Set<string>();
-  expected.add(destination(href, row.route));
-  sourceLinks.set(row.route, expected);
-}
+test('Malvavisco pages link only to reachable local routes and approved external schemes', async ({ page, request }) => {
+  test.setTimeout(90_000);
+  const base = new URL('http://127.0.0.1:4393');
+  const targets = new Map<string, string[]>();
+  const failures: string[] = [];
 
-for (const [route, expected] of sourceLinks) {
-  test(`${route} preserves the exported link destinations`, async ({ page }) => {
-    await page.goto(route, { waitUntil: "domcontentloaded" });
-    const actual = new Set(
-      (await page.locator("a[href]").evaluateAll((anchors) =>
-        anchors.map((anchor) => anchor.getAttribute("href")).filter((href): href is string => !!href),
-      )).map((href) => destination(href, route)),
-    );
-    expect([...expected].filter((href) => !actual.has(href))).toEqual([]);
-  });
-}
+  for (const route of routes) {
+    await page.goto(route, { waitUntil: 'domcontentloaded' });
+    const hrefs = await page.locator('a[href]').evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute('href') ?? ''));
+    for (const href of hrefs) {
+      if (!href) continue;
+      if (/artho|framer\.website|framerusercontent\.com/i.test(href)) failures.push(`${route}: old template link ${href}`);
+      if (/^(mailto:|tel:|https?:\/\/)/i.test(href)) continue;
+      const url = new URL(href, new URL(route, base));
+      if (url.origin !== base.origin) continue;
+      const destination = `${url.pathname}${url.search}`;
+      const sources = targets.get(destination) ?? [];
+      sources.push(route);
+      targets.set(destination, sources);
+      if (url.hash && url.pathname === route) {
+        const id = decodeURIComponent(url.hash.slice(1));
+        const exists = await page.evaluate((anchorId) => !!document.getElementById(anchorId), id);
+        if (!exists) failures.push(`${route}: missing #${id}`);
+      }
+    }
+  }
+
+  for (const [destination, sources] of targets) {
+    const response = await request.get(destination);
+    if (!response.ok()) failures.push(`${sources[0]} -> ${destination}: HTTP ${response.status()}`);
+  }
+  expect(failures).toEqual([]);
+});

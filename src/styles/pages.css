@@ -1110,7 +1110,7 @@
   margin-top: 16px;
 }
 
-.article-body h3 {
+.article-body h2 {
   margin: 40px 0 18px;
   font-size: 34px;
   letter-spacing: -0.03em;
@@ -1316,7 +1316,7 @@
     height: 924px;
   }
 
-  .article-body h3 {
+  .article-body h2 {
     font-size: 30px;
   }
 
@@ -1674,7 +1674,7 @@
     line-height: 22.4px;
   }
 
-  .article-body h3 {
+  .article-body h2 {
     margin-top: 42px;
     font-size: 26px;
   }

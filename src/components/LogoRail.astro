@@ -1,14 +1,31 @@
 ---
-import { logoMarks } from "../data/site";
+const areas = ["Bookings", "Calendar", "Activities", "Kitchen", "Reports"] as const;
 ---
 
-<section class="logo-rail" aria-label="Trusted companies">
+<section class="logo-rail" aria-label="LodgeOps workspace areas">
   <div class="logo-rail-inner">
-    <p>Trusted by clients across the world</p>
+    <p>One workspace, from first inquiry to final bill</p>
     <div class="logo-marquee" aria-hidden="true">
       <div class="logo-track">
-        {Array.from({ length: 4 }, () => logoMarks).flat().map((src) => <img src={src} alt="" />)}
+        {Array.from({ length: 4 }, () => areas).flat().map((area) => <span class="area-mark">{area}</span>)}
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .area-mark {
+    display: inline-flex;
+    width: 120px;
+    height: 40px;
+    flex: 0 0 120px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(11, 11, 11, .14);
+    border-radius: 999px;
+    background: #f6f6f6;
+    color: #0b0b0b;
+    font-size: 13px;
+    font-weight: 600;
+  }
+</style>

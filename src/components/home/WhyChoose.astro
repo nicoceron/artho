@@ -4,26 +4,26 @@ import MotionScene from "../MotionScene.astro";
 
 const cards = [
   {
-    title: "Simple & Intuitive",
-    subtitle: "Easy to set up and use from day one.",
-    label: "User-Friendly Interface",
-    text: "Clean, organized layout that makes managing finances effortless—no training required.",
+    title: "A clear day for every role",
+    subtitle: "See what needs attention before the day starts.",
+    label: "Daily operations",
+    text: "Arrivals, room readiness, kitchen work and role-specific tasks share the same plan.",
     scene: "simple",
     tone: "mint",
   },
   {
-    title: "Real-Time Accuracy",
-    subtitle: "Instant financial tracking at your fingertips.",
-    label: "Live Data Sync",
-    text: "Real-time updates across dashboards, reports, and all connected devices for always-accurate insights.",
+    title: "The right resources, reserved",
+    subtitle: "Keep guides and gear aligned with the stay.",
+    label: "Capacity-aware scheduling",
+    text: "Assign guides and equipment to activities with checks for overlapping commitments.",
     scene: "accuracy",
     tone: "blue",
   },
   {
-    title: "Secure & Reliable",
-    subtitle: "Your financial data is always safe.",
-    label: "Enterprise-Grade Security",
-    text: "Protected by advanced encryption, secure cloud storage, and reliable uptime you can count on.",
+    title: "One workspace for your team",
+    subtitle: "Give each person the tools for their job.",
+    label: "Roles and accountability",
+    text: "Staff roles, two-factor sign-in and an activity log support day-to-day handoffs.",
     scene: "security",
     tone: "cream",
   },
@@ -32,7 +32,7 @@ const cards = [
 
 <section class="why-section section-pad">
   <div class="shell">
-    <SectionHeader eyebrow="Why Choose Us" title="Why Teams Trust Our Financial Software" description="We combine powerful features with effortless usability to help you take control of your finances and grow with confidence." />
+    <SectionHeader eyebrow="Why Malvavisco" title="Calmer operations across the lodge" description="Keep the guest stay, the team’s work and the balance connected from arrival to departure." />
     <div class="why-grid">
       {cards.map((card, index) => (
         <article class:list={["why-card", card.tone, { featured: index === 0 }]} data-motion-card>

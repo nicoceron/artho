@@ -1,24 +1,23 @@
 ---
 import Badge from './Badge.astro';
 import UiIcon from './UiIcon.astro';
-import Button from "./Button.astro";
-import CheckList from "./CheckList.astro";
-import { checkBenefits, image } from "../data/site";
+import Button from './Button.astro';
+import CheckList from './CheckList.astro';
 ---
 
 <section class="main-cta section-pad">
   <div class="main-cta-panel shell" data-reveal>
     <div class="main-cta-copy">
-      <Badge label="Start Smarter, Manage Better" />
-      <h2>Ready to simplify how you handle your finances?</h2>
+      <Badge label="See LodgeOps at Work" />
+      <h2>Bring your busiest week. We’ll show you how it fits.</h2>
       <ul class="cta-benefits">
-        <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>Quick & Easy Setup</b><p>Get started in minutes. Connect your accounts and instantly see where your money goes.</p></div></li>
-        <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>Built for Real Business Needs</b><p>From freelancers to growing teams, our tools scale with you—no clutter, no confusion.</p></div></li>
-        <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>Access Anywhere, Anytime</b><p>Manage everything from desktop or mobile. Your finances, always in sync and up to date.</p></div></li>
+        <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>Start with your place</b><p>Walk through your rooms, rates, activities, and the people who run them.</p></div></li>
+        <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>Follow a real stay</b><p>See a booking move through the calendar, guides and gear, kitchen, and bill.</p></div></li>
+        <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>Get straight answers</b><p>We’ll show what LodgeOps does today and discuss what your operation needs.</p></div></li>
       </ul>
-      <div class="button-row"><Button href="/pricing">Start Free Trial <span class="button-arrow">→</span></Button><Button href="/contact" variant="outline">Book a Demo</Button></div>
-      <CheckList items={checkBenefits} compact />
+      <div class="button-row"><Button href="/contact">Request a Demo <span class="button-arrow">→</span></Button><Button href="/features" variant="outline">Explore the Product</Button></div>
+      <CheckList items={["Built for lodge operations", "English and Spanish staff interface", "Configured for your property"]} compact />
     </div>
-    <div class="main-cta-media"><img src={image("QSkLnJSuSnRK9rXOsrSn26Ejs.png")} alt="Artho dashboard overview" /></div>
+    <div class="main-cta-media"><img src="/product/dashboard.webp" alt="LodgeOps dashboard for a fictional sample lodge" loading="lazy" /></div>
   </div>
 </section>

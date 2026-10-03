@@ -516,6 +516,18 @@ on<MotionHost>("[data-motion-sequence]", (host) => {
   window.addEventListener("resize", () => {
     if (window.innerWidth < 1200) stopMotionSequence(host);
   }, { passive: true });
+  const syncMotionPreference = () => {
+    if (prefersReducedMotion()) {
+      stopMotionSequence(host);
+    } else if (pointerTrigger.matches(":hover") || host.matches(":focus-within")) {
+      startMotionSequence(host);
+    }
+  };
+  reducedMotionQuery.addEventListener("change", syncMotionPreference);
+  window.addEventListener("pagehide", () => {
+    stopMotionSequence(host);
+    reducedMotionQuery.removeEventListener("change", syncMotionPreference);
+  }, { once: true });
 });
 
 on<HTMLElement>("[data-control-scene]", (scene) => {
@@ -527,7 +539,7 @@ on<HTMLElement>("[data-control-scene]", (scene) => {
   const setNotificationsOpen = (open: boolean) => {
     visual.dataset.notificationOpen = String(open);
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close notifications" : "Open notifications");
+    toggle.setAttribute("aria-label", open ? "Close sample updates" : "Open sample updates");
     panel.setAttribute("aria-hidden", String(!open));
   };
 
