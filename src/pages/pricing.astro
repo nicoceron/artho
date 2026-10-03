@@ -5,38 +5,45 @@ import SectionHeader from "../components/SectionHeader.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import Testimonials from "../components/Testimonials.astro";
 import UiIcon from '../components/UiIcon.astro';
-import { pricingFaqs } from "../data/site";
 
-const plans = [
-  { name: "Starter Plan", monthly: "$0", yearly: "$0", description: "Perfect for freelancers or solo founders", cta: "Start for Free", tone: "gray", features: ["Real-time financial dashboard", "Unlimited invoicing", "Smart transaction categorization", "1 bank account integration", "Email support"] },
-  { name: "Growth Plan", monthly: "$29", yearly: "$290", description: "Built for growing teams that need more control", cta: "Start 7-Day Free Trial", tone: "mint", features: ["Everything in Starter", "Automated billing & payment reminders", "Smart reports & visual analytics", "Multi-account & currency support", "Priority chat support"] },
-  { name: "Business Plan", monthly: "$79", yearly: "$790", description: "For scaling teams and advanced financial operations", cta: "Book a Demo", tone: "blue", features: ["Everything in Growth", "Advanced budgeting & forecasting tools", "Custom roles & access control", "Premium integrations (e.g. ERP, payroll)", "Dedicated onboarding & account manager"] },
+const steps = [
+  { name: "Tell Us About Your Lodge", number: "01", description: "We start with your property and the work your team does every day.", tone: "gray", features: ["Rooms, cabins and locations", "Rates, services and products", "Guides, gear and kitchen", "Current booking and payment process", "The questions you want answered"] },
+  { name: "See a Real Workflow", number: "02", description: "We walk through LodgeOps using a sample lodge and your practical scenarios.", tone: "mint", features: ["Quote and save a stay", "Check room and crew availability", "Run an activity and kitchen order", "Record a payment and print an invoice", "Review reporting and roles"] },
+  { name: "Discuss the Fit", number: "03", description: "If the product fits, we can discuss configuration, rollout and commercial terms.", tone: "blue", features: ["What your team needs configured", "What works today", "What remains outside the product", "Training and support expectations", "A scope-based commercial conversation"] },
 ] as const;
 
-const addOns = [
-  ["Advanced Analytics", "Deeper insights, trend forecasting, and exportable custom reports for teams that thrive on data.", "$15", "per month", "analytics"],
-  ["Multi-Currency Support", "Manage transactions, invoices, and reporting in 160+ currencies with real-time FX conversions.", "$10", "per month", "currency"],
-  ["Enhanced Security & Compliance", "Includes SSO, audit logs, and enterprise-grade encryption for finance teams with regulatory needs.", "$20", "per month", "shield"],
-  ["Additional Team Members", "Scale your access as your team grows—add unlimited collaborators, with role-based permissions.", "$5", "per month per seat", "team"],
-  ["Premium Integrations Pack", "Access integrations with ERPs, payroll systems, and advanced CRMs not included in core plans.", "$25", "per month", "integrations"],
+const tourAreas = [
+  ["Bookings & Calendar", "Rooms and split stays, capacity checks, Places, Crew and Assets views.", "calendar"],
+  ["Activities & Operations", "Purchased services become scheduled work with concrete guides and gear.", "team"],
+  ["Kitchen & Point of Sale", "Booking-linked charges become preparation tickets where needed.", "integrations"],
+  ["Payments & Reports", "Manual receipts, printable invoices and currency-specific reporting.", "analytics"],
+  ["Team & Guest Messages", "Eleven staff roles, bilingual templates and configurable reminders.", "shield"],
+] as const;
+
+const questions = [
+  ["Is there a published subscription price or free trial?", "No public subscription tiers or self-service trial have been set for Malvavisco. We discuss commercial terms after seeing what your lodge needs."],
+  ["Can we use LodgeOps across more than one lodge?", "The system supports separate workspaces and properties. A person who belongs to several workspaces can switch between them."],
+  ["Do guests pay online through LodgeOps?", "Staff can record cash, bank-transfer and card-terminal payments. Mercado Pago links for Argentina and ARS are built, but real provider checkout and settlement have not been accepted for production use."],
+  ["Does LodgeOps connect to Booking.com or Airbnb?", "No. LodgeOps is not a channel manager. It can publish iCal availability feeds for external calendars."],
+  ["How long does setup take?", "It depends on your properties, room inventory, rates, activities, team and guest communications. We will review that scope with you rather than promise a fixed setup time."],
+  ["Can we see what is not in the product yet?", "Yes. We cover limits during the walkthrough, including online checkout, OTA connections, fiscal integration, package pricing and offline operation."],
 ] as const;
 ---
 
-<BaseLayout>
+<BaseLayout title="For Lodges — LodgeOps by Malvavisco" description="See how LodgeOps could fit your lodge, then discuss setup and commercial terms with Malvavisco.">
   <section class="pricing-hero section-pad">
     <div class="shell">
-      <p class="breadcrumb centered"><a href="/">Home</a><span>/</span>Pricing</p>
-      <SectionHeader level="h1" title="Simple, Transparent Pricing for Every Stage" description="Whether you're just getting started or scaling fast, we’ve got a plan that fits your workflow and budget. No hidden fees, no surprises." />
-      <div class="billing-toggle" role="group" aria-label="Billing period"><button class="active" type="button" data-billing-toggle="monthly" aria-pressed="true">Monthly</button><button type="button" data-billing-toggle="yearly" aria-pressed="false">Yearly</button></div>
+      <p class="breadcrumb centered"><a href="/">Home</a><span>/</span>For Lodges</p>
+      <SectionHeader level="h1" title="See How LodgeOps Fits Your Lodge" description="Tell us how your property runs. We’ll show you the product against your real workflow and discuss scope and commercial terms if it is a fit." />
       <div class="pricing-grid">
-        {plans.map((plan) => (
-          <article class:list={["pricing-card", plan.tone]} data-price-card>
-            <h3>{plan.name}</h3>
-            <div class="price"><strong data-monthly-price={plan.monthly} data-yearly-price={plan.yearly}>{plan.monthly}</strong><span data-billing-period>/month</span></div>
-            <p>{plan.description}</p>
-            <h4>What’s Included:</h4>
-            <ul>{plan.features.map((feature) => <li><span>✓</span>{feature}</li>)}</ul>
-            <a class="button button-dark" href="/contact">{plan.cta}</a>
+        {steps.map((step) => (
+          <article class:list={["pricing-card", step.tone]}>
+            <h3>{step.name}</h3>
+            <div class="price"><strong>{step.number}</strong></div>
+            <p>{step.description}</p>
+            <h4>We cover:</h4>
+            <ul>{step.features.map((feature) => <li><span>✓</span>{feature}</li>)}</ul>
+            <a class="button button-dark" href="/contact">Request a Demo</a>
           </article>
         ))}
       </div>
@@ -45,19 +52,23 @@ const addOns = [
   <LogoRail />
   <section class="addons-section section-pad">
     <div class="shell">
-      <SectionHeader eyebrow="Add-Ons" title="Customize Your Plan with Powerful Add-Ons" description="Enhance your workflow with optional features that scale with your business. Add only what you need—when you need it." />
+      <SectionHeader eyebrow="Product Walkthrough" title="Follow the Work from Booking to Checkout" description="The demo uses real areas of the LodgeOps staff app with fictional sample lodge data." />
       <div class="addon-list">
-        {addOns.map(([title, description, price, period, icon]) => (
-          <article class="addon-card"><div class="addon-intro"><span class="addon-icon"><UiIcon name={icon} size={20} /></span><div><h3>{title}</h3><p>{description}</p></div></div><div class="addon-price"><strong>{price}</strong><span>{period}</span></div><a class="button button-outline compact" href="/contact">Get Add-on</a></article>
+        {tourAreas.map(([title, description, icon], index) => (
+          <article class="addon-card"><div class="addon-intro"><span class="addon-icon"><UiIcon name={icon} size={20} /></span><div><h3>{title}</h3><p>{description}</p></div></div><div class="addon-price"><strong>{String(index + 1).padStart(2, '0')}</strong></div><a class="button button-outline compact" href="/contact">See in Demo</a></article>
         ))}
       </div>
     </div>
   </section>
   <section class="pricing-faq section-pad">
     <div class="shell faq-shell">
-      <SectionHeader eyebrow="Frequently Asked Questions" title="Still Have Questions? We’ve Got Answers." />
-      <FaqAccordion items={pricingFaqs} />
+      <SectionHeader eyebrow="Practical Questions" title="What to Know Before We Talk" />
+      <FaqAccordion items={questions} />
     </div>
   </section>
   <Testimonials />
 </BaseLayout>
+
+<style>
+  .addon-price strong { font-size: 20px; }
+</style>

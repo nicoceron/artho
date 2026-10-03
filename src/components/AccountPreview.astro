@@ -1,27 +1,31 @@
 ---
-import { image } from '../data/site';
 import UiIcon from './UiIcon.astro';
 interface Props { variant?: 'signup' | 'card' }
 const { variant = 'signup' } = Astro.props;
 ---
 {variant === 'signup' ? (
   <div class="auth-card" inert aria-hidden="true">
+    <div class="preview-card-header"><h3>Set up your lodge</h3><p>A sample setup of the places and services you offer.</p></div>
     <div class="preview-fields">
-      <label>Username*<span class="preview-input"><UiIcon name="user" /><input type="text" placeholder="Your Name" /></span></label>
-      <label>Email Address*<span class="preview-input"><UiIcon name="email" /><input type="email" placeholder="your@email.com" /></span></label>
-      <label>Password*<span class="preview-input"><UiIcon name="lock" /><input type="password" placeholder="••••••••••" /></span><small>Your password must have at leat 8 characters.</small></label>
+      <label>Lodge name<span class="preview-input"><UiIcon name="user" /><input type="text" value="Refugio del Bosque" readonly /></span></label>
+      <label>Place<span class="preview-input"><UiIcon name="calendar" /><input type="text" value="Cabaña Lenga · 2 guests" readonly /></span></label>
+      <label>Nightly rate<span class="preview-input"><UiIcon name="info" /><input type="text" value="Configured for this workspace" readonly /></span><small>Rates and capacity are set for each place.</small></label>
     </div>
-    <label class="preview-agreement"><input type="checkbox" /><span>By creating an account means you agree to the <a href="/legal/terms-of-service">Terms &amp; Conditions</a> and <a href="/legal/privacy-policy">our Privacy Policy</a></span></label>
-    <button type="button">Sign Up</button>
-    <p class="preview-divider">Or sign up with</p>
-    <div class="auth-social"><span><img src={image('y3RoDFmFvhHiJwhDiqPhrVRAHU.svg')} alt="" />Google</span><span><img src={image('uvn9l3fjVybk5Osa7bLBbt7JQs.svg')} alt="" />Facebook</span></div>
-    <p>Already have an account? <a href="/contact">Sign In</a></p>
+    <div class="preview-agreement"><span class="preview-check" aria-hidden="true">✓</span><span>Rooms, services and the team’s resources belong to the same workspace.</span></div>
+    <button type="button" tabindex="-1">Save place</button>
+    <p class="preview-divider">Then add the team</p>
+    <div class="auth-social"><span>Reception</span><span>Housekeeping</span></div>
+    <p>Each role sees the work relevant to them.</p>
   </div>
 ) : (
   <div class="connect-card" inert aria-hidden="true">
-    <div class="preview-card-header"><h3>Add New Card</h3><span aria-hidden="true">×</span><p>Add a digital card to see your financial amount</p></div>
-    <div class="preview-card-fields"><span class="preview-input"><UiIcon name="card" /><input aria-label="Card number preview" value="3388 4556 8860 8899" readonly /></span><div><span class="preview-input"><UiIcon name="calendar" /><input aria-label="Expiry date preview" placeholder="Expired Date" readonly /></span><span class="preview-input"><UiIcon name="info" /><input aria-label="Security code preview" placeholder="CV/CVV" readonly /></span></div><input aria-label="Cardholder preview" placeholder="Name on Card" readonly /></div>
-    <label class="preview-agreement"><input type="checkbox" /><span>Show Card</span></label>
-    <button type="button">Add Card</button>
+    <div class="preview-card-header"><h3>Build a booking</h3><span aria-hidden="true">×</span><p>Keep the whole stay in one place.</p></div>
+    <div class="preview-card-fields">
+      <span class="preview-input"><UiIcon name="calendar" /><input aria-label="Arrival preview" value="Arrival · 12 October" readonly /></span>
+      <div><span class="preview-input"><UiIcon name="calendar" /><input aria-label="Departure preview" value="15 October" readonly /></span><span class="preview-input"><UiIcon name="user" /><input aria-label="Guests preview" value="2 guests" readonly /></span></div>
+      <input aria-label="Place preview" value="Cabaña Lenga" readonly />
+    </div>
+    <div class="preview-agreement"><span class="preview-check" aria-hidden="true">✓</span><span>Room capacity and overlapping stays are checked.</span></div>
+    <button type="button" tabindex="-1">Review booking</button>
   </div>
 )}

@@ -1,39 +1,167 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const demoEndpoint = (import.meta.env.PUBLIC_DEMO_ENDPOINT as string | undefined)?.trim() ?? '';
+const contactEmail = (import.meta.env.PUBLIC_CONTACT_EMAIL as string | undefined)?.trim() ?? '';
+const canReceiveRequests = Boolean(demoEndpoint || contactEmail);
 ---
 
-<BaseLayout>
+<BaseLayout title="Request a Demo — LodgeOps by Malvavisco" description="Tell Malvavisco about your lodge and see LodgeOps with your rooms, activities and daily operations in mind.">
   <section class="contact-section section-pad">
     <div class="shell contact-layout">
       <div class="contact-copy">
-        <p class="breadcrumb"><a href="/">Home</a><span>/</span>Contact</p>
-        <h1>Let’s Talk Finance — We’re Here to Help</h1>
-        <p class="contact-lead">Have a question, need support, or want a demo? Reach out and our team will get back to you within 24 hours. We’d love to hear from you.</p>
+        <p class="breadcrumb"><a href="/">Home</a><span>/</span>Request a Demo</p>
+        <h1>Pull Up a Chair. Show Us Your Lodge.</h1>
+        <p class="contact-lead">Bring your room list and a typical busy week. We’ll walk through bookings, guides and gear, kitchen work, payments and reporting in LodgeOps.</p>
         <div class="contact-methods">
-          <article><h2>Email Us</h2><a class="button button-dark compact" href="mailto:support@artho.com">support@artho.com</a><p>For any inquiries or assistance, feel free to email us. We aim to respond within 24 hours.</p></article>
-          <article><h2>Call Us</h2><a class="button button-dark compact" href="tel:18001234567">1-800-123-4567</a><p>Our customer support team is available Monday to Friday, 9 AM to 6 PM (EST).</p></article>
-          <article><h2>Visit Our Help Center</h2><a class="button button-dark compact" href="/faq">Artho Help Center</a><p>Find answers to common questions, tutorials, and guides.</p></article>
+          <article><h2>See the Real Product</h2><a class="button button-dark compact" href="/features">Explore LodgeOps</a><p>Browse screens from the staff app filled with fictional sample lodge data.</p></article>
+          <article><h2>Check the Fit</h2><a class="button button-dark compact" href="/pricing">For Lodges</a><p>See the workflow we’ll cover and the product limits we’ll discuss.</p></article>
+          <article><h2>Find an Answer</h2><a class="button button-dark compact" href="/faq">Common Questions</a><p>Read about setup, payments, team access and what LodgeOps does not do yet.</p></article>
         </div>
       </div>
 
-      <form class="contact-form" action="#" method="post">
-        <h2>Send Us a Message</h2>
-        <label>Name*<input type="text" name="name" placeholder="Jane Smith" required /></label><label>Email*<input type="email" name="email" placeholder="jane@framer.com" required /></label>
-        <label>Phone Number<input type="tel" name="phone" placeholder="(+00)000000" /></label>
-        <label>Subject*<input type="text" name="subject" placeholder="Request Demo Account" required /></label>
-        <label>Message*<textarea name="message" rows="7" placeholder="Message" required></textarea></label>
-        <button class="button button-dark" type="submit">Submit</button>
-        <p class="form-status" role="status" aria-live="polite"></p>
+      <form class="contact-form" data-demo-form data-endpoint={demoEndpoint} data-email={contactEmail} action="#" method="post" novalidate>
+        <h2>Tell Us About Your Place</h2>
+        <label>Your name*<input type="text" name="name" autocomplete="name" placeholder="Your name" required /></label>
+        <label>Email*<input type="email" name="email" autocomplete="email" placeholder="you@yourlodge.com" required /></label>
+        <label>Lodge name*<input type="text" name="lodge" autocomplete="organization" placeholder="Your lodge" required /></label>
+        <label>Country<input type="text" name="country" autocomplete="country-name" placeholder="Where your lodge is" /></label>
+        <label>Rooms, cabins or tents
+          <select name="rooms">
+            <option value="">Choose one</option>
+            <option value="1–5">1–5</option>
+            <option value="6–15">6–15</option>
+            <option value="16–40">16–40</option>
+            <option value="More than 40">More than 40</option>
+          </select>
+        </label>
+        <label>What should we walk through?<textarea name="message" rows="6" placeholder="Rooms, activities, meals, payments, or the tricky parts of your day"></textarea></label>
+        <label class="honeypot" aria-hidden="true">Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        <button class="button button-dark" type="submit" disabled>Request a Demo</button>
+        <p class="form-status" role="status" aria-live="polite" data-status data-state={canReceiveRequests ? 'pending' : 'unavailable'}>{canReceiveRequests ? 'This form needs JavaScript to prepare your request.' : 'Demo requests are not connected yet. Please check back soon.'}</p>
       </form>
     </div>
   </section>
 </BaseLayout>
 
+<style>
+  .contact-form select {
+    width: 100%;
+    min-height: 40px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px rgba(11, 11, 11, .2);
+    background: transparent;
+    padding: 0 12px;
+    font: inherit;
+    font-size: 14px;
+  }
+  .contact-form .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .contact-form button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+  .contact-form input[aria-invalid="true"] { box-shadow: inset 0 0 0 2px #b91c1c; }
+  .form-status[data-state="error"] { color: #b91c1c; }
+  .form-status[data-state="unavailable"],
+  .form-status[data-state="draft"],
+  .form-status[data-state="pending"] { color: #52525b; }
+</style>
+
 <script>
-  const form = document.querySelector<HTMLFormElement>(".contact-form");
-  form?.addEventListener("submit", (event) => {
+  const form = document.querySelector<HTMLFormElement>("[data-demo-form]");
+  const status = form?.querySelector<HTMLElement>("[data-status]");
+  const showStatus = (message: string, state: 'error' | 'success' | 'pending' | 'draft' | 'unavailable') => {
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.state = state;
+  };
+
+  const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  if (submitButton && (form?.dataset.endpoint || form?.dataset.email)) {
+    submitButton.disabled = false;
+    showStatus('', 'pending');
+  }
+
+  form?.querySelectorAll<HTMLInputElement>('input[required]').forEach((field) => {
+    field.addEventListener('input', () => {
+      if (field.checkValidity() && field.value.trim()) field.removeAttribute('aria-invalid');
+    });
+  });
+
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const status = form.querySelector<HTMLElement>(".form-status");
-    if (status) status.textContent = "Demo form only — no message was sent.";
+    if (!status) return;
+    const data = new FormData(form);
+    if (data.get("website")) return;
+
+    let firstInvalid: HTMLInputElement | null = null;
+    for (const field of form.querySelectorAll<HTMLInputElement>("input[required]")) {
+      const valid = field.checkValidity() && field.value.trim() !== "";
+      field.setAttribute("aria-invalid", String(!valid));
+      if (!valid && !firstInvalid) firstInvalid = field;
+    }
+    if (firstInvalid) {
+      showStatus("Please add your name, a valid email and your lodge’s name.", 'error');
+      firstInvalid.focus();
+      return;
+    }
+
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      lodge: String(data.get("lodge") ?? "").trim(),
+      country: String(data.get("country") ?? "").trim(),
+      rooms: String(data.get("rooms") ?? ""),
+      runs: [] as string[],
+      message: String(data.get("message") ?? "").trim(),
+    };
+    const endpoint = form.dataset.endpoint?.trim();
+    const email = form.dataset.email?.trim();
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+    if (endpoint) {
+      button?.setAttribute("disabled", "");
+      showStatus("Sending your request…", 'pending');
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        form.reset();
+        showStatus("Request submitted. We’ll use the email you provided to arrange a walkthrough.", 'success');
+      } catch {
+        showStatus("Your request could not be submitted. Please try again.", 'error');
+      } finally {
+        button?.removeAttribute("disabled");
+      }
+      return;
+    }
+
+    if (email) {
+      const subject = `LodgeOps demo request: ${payload.lodge}`;
+      const body = [
+        `Name: ${payload.name}`,
+        `Email: ${payload.email}`,
+        `Lodge: ${payload.lodge}`,
+        `Country: ${payload.country}`,
+        `Rooms: ${payload.rooms}`,
+        "",
+        payload.message,
+      ].join("\n");
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      showStatus("Your email app should open with a draft. Send it to complete the request.", 'draft');
+      return;
+    }
+
+    showStatus("Demo requests are not connected yet. Please check back soon.", 'unavailable');
   });
 </script>

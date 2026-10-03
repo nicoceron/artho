@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "artho-astro-preview",
+  "name": "malvavisco-astro-preview",
   "compatibility_date": "2026-10-03",
   "assets": {
     "directory": "./dist",

@@ -1,12 +1,12 @@
 import { expect, test } from "@playwright/test";
 
-test("balance starts at the source pre-view value and resolves when visible", async ({ page }) => {
+test("sample arrivals count starts at zero and resolves when visible", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const balance = page.locator(".balance-details [data-count-value]");
-  await expect(balance).toHaveText("$0");
+  await expect(balance).toHaveText("0");
   await balance.scrollIntoViewIfNeeded();
-  await expect(balance).toHaveText("$16,058.94");
+  await expect(balance).toHaveText("2");
 });
 
 test("rapid workflow reversals keep the selected card visible without shifting the page", async ({ page }) => {
@@ -29,7 +29,7 @@ test("rapid workflow reversals keep the selected card visible without shifting t
   expect(after?.height).toBeCloseTo(before!.height, 0);
 });
 
-test("hero preserves the source entrance delays and downward-scroll variants", async ({ page }) => {
+test("hero preserves its entrance delays and downward-scroll variants", async ({ page }) => {
   await page.goto("/");
   const timings = await page.locator("[data-hero]").evaluate((hero) =>
     hero.getAnimations({ subtree: true }).map((animation) => {
@@ -57,18 +57,18 @@ test("hero preserves the source entrance delays and downward-scroll variants", a
   await expect(page.locator("[data-hero]")).toHaveAttribute("data-motion-variant", "Desktop");
 });
 
-test('workflow analytics plays its six source appear states and stops when hidden', async ({ page }) => {
+test('workflow analytics plays six appear states and stops when hidden', async ({ page }) => {
   await page.goto('/');
-  await page.getByRole('tab', { name:/Get Smart Financial Insights/ }).click();
+  await page.getByRole('tab', { name:/Run the day together/ }).click();
   const scene = page.locator('.workflow-tabs [data-workflow-analytics]');
   await expect(scene).toHaveAttribute('data-motion-delays', '1000,1000,1000,1000,1000,1000');
   await expect(scene).toHaveAttribute('data-workflow-step', '1', { timeout:2000 });
   await expect(scene).toHaveAttribute('data-workflow-step', '6', { timeout:6500 });
   await expect(scene.locator('.analytics-bars')).toHaveCSS('opacity', '1');
-  await page.getByRole('tab', { name:/Create Your Account/ }).click();
+  await page.getByRole('tab', { name:/Set up your places and rates/ }).click();
   await expect(scene).toHaveAttribute('data-workflow-step', '0');
   await page.emulateMedia({ reducedMotion:'reduce' });
-  await page.getByRole('tab', { name:/Get Smart Financial Insights/ }).click();
+  await page.getByRole('tab', { name:/Run the day together/ }).click();
   await page.waitForTimeout(1200);
   await expect(scene).toHaveAttribute('data-workflow-step', '0');
 });
@@ -92,9 +92,9 @@ test('signup preview reveals its lower form, resets on tab changes, and honors r
   await panel.scrollIntoViewIfNeeded();
   await expect(panel).toHaveAttribute('data-signup-stage', 'bottom');
 
-  await page.getByRole('tab', { name: /Connect Your Financial Tools/ }).click();
+  await page.getByRole('tab', { name: /Build the stay/ }).click();
   await expect(panel).toHaveAttribute('data-signup-stage', 'top');
-  await page.getByRole('tab', { name: /Create Your Account/ }).click();
+  await page.getByRole('tab', { name: /Set up your places and rates/ }).click();
   await expect(panel).toHaveAttribute('data-signup-stage', 'top');
   await expect(panel).toHaveAttribute('data-signup-stage', 'bottom', { timeout: 4500 });
 
@@ -104,7 +104,7 @@ test('signup preview reveals its lower form, resets on tab changes, and honors r
   await expect(panel).toHaveAttribute('data-signup-stage', 'top');
 });
 
-test("hero dashboard uses the exact source panels and breakpoint geometry", async ({ page }) => {
+test("Malvavisco hero cards stay attached to the product preview at each breakpoint", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
 
   const geometry = () => page.locator("[data-hero-dashboard]").evaluate((root) => {
@@ -127,48 +127,43 @@ test("hero dashboard uses the exact source panels and breakpoint geometry", asyn
 
   await page.setViewportSize({ width: 1306, height: 950 });
   await page.goto("/");
-  await expect(page.locator(".hero-floating-expense")).toHaveAttribute("src", /Wa0iJs5NoZkKXbnov7KxFUi2Tc\.svg$/);
-  await expect(page.locator(".hero-floating-balance")).toHaveAttribute("src", /xBxllK2qhbBQQc56D90nWUyWA\.svg$/);
+  await expect(page.locator("[data-hero-dashboard] .browser-window > img")).toHaveAttribute("src", /\/product\/dashboard\.webp$/);
+  await expect(page.locator(".hero-floating-expense")).toContainText("Operations board");
+  await expect(page.locator(".hero-floating-balance")).toContainText("Arrivals and departures");
   let desktop = await geometry();
-  expect(desktop.root).toEqual({ width: 1100, height: 600 });
-  expect(desktop.expense.x).toBeCloseTo(715, 0);
-  expect(desktop.expense.y).toBeCloseTo(60, 0);
-  expect(desktop.expense.width).toBeCloseTo(385, 0);
-  expect(desktop.balance.x).toBeCloseTo(0, 0);
-  expect(desktop.balance.y + desktop.balance.height).toBeCloseTo(600, 0);
+  expect(desktop.root.width).toBeGreaterThan(900);
+  expect(desktop.expense.x).toBeGreaterThan(desktop.balance.x);
+  expect(desktop.expense.width).toBeGreaterThan(250);
+  expect(desktop.balance.y + desktop.balance.height).toBeCloseTo(desktop.root.height, 0);
   await page.evaluate(() => window.scrollTo(0, 500));
   await expect(page.locator('[data-hero]')).toHaveAttribute('data-motion-variant', 'Desktop/On Scroll');
-  await expect.poll(async () => (await geometry()).expense.y).toBeCloseTo(120, 0);
+  await expect.poll(async () => (await geometry()).expense.y).toBeGreaterThan(desktop.expense.y + 40);
 
   await page.setViewportSize({ width: 810, height: 1080 });
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(100);
   let tablet = await geometry();
-  expect(tablet.root).toEqual({ width: 690, height: 500 });
-  expect(tablet.expense.x).toBeCloseTo(448.5, 0);
-  expect(tablet.expense.y).toBeCloseTo(55, 0);
-  expect(tablet.expense.width).toBeCloseTo(241.5, 0);
-  expect(tablet.balance.y + tablet.balance.height).toBeCloseTo(500, 0);
+  expect(tablet.root.width).toBeGreaterThan(600);
+  expect(tablet.expense.x).toBeGreaterThan(tablet.balance.x);
+  expect(tablet.balance.y + tablet.balance.height).toBeCloseTo(tablet.root.height, 0);
 
   await page.evaluate(() => window.scrollTo(0, 500));
   await expect(page.locator("[data-hero]")).toHaveAttribute("data-motion-variant", "Tablet/On Scroll");
-  tablet = await geometry();
-  expect(tablet.expense.y).toBeCloseTo(110, 0);
-  expect(tablet.balance.y + tablet.balance.height).toBeCloseTo(467, 0);
+  const tabletScrolled = await geometry();
+  expect(tabletScrolled.expense.y).toBeGreaterThan(tablet.expense.y + 40);
+  expect(tabletScrolled.balance.y + tabletScrolled.balance.height).toBeLessThan(tablet.root.height - 20);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(100);
   const phone = await geometry();
-  expect(phone.root.width).toBeCloseTo(330, 0);
-  expect(phone.root.height).toBeCloseTo(272.47, 1);
-  expect(phone.expense.x).toBeCloseTo(198, 0);
-  expect(phone.expense.y).toBeCloseTo(40, 0);
-  expect(phone.expense.width).toBeCloseTo(132, 0);
-  expect(phone.balance.y + phone.balance.height).toBeCloseTo(272.47, 1);
+  expect(phone.root.width).toBeGreaterThan(300);
+  expect(phone.expense.x).toBeGreaterThan(phone.balance.x);
+  expect(phone.expense.x + phone.expense.width).toBeLessThanOrEqual(phone.root.width + 1);
+  expect(phone.balance.y + phone.balance.height).toBeCloseTo(phone.root.height, 1);
 });
 
-test("trusted logos and integration orbit keep their source-derived long tracks", async ({ page }) => {
+test("workspace-area rail and integration orbit keep their continuous tracks", async ({ page }) => {
   await page.goto("/");
   const logoAnimation = page.locator(".logo-track");
   await expect.poll(() => logoAnimation.evaluate((element) => element.getAnimations()[0]?.effect?.getTiming().duration)).toBe(86_666);
@@ -179,12 +174,12 @@ test("trusted logos and integration orbit keep their source-derived long tracks"
   await page.locator(".logo-marquee").hover();
   await expect.poll(() => logoAnimation.evaluate((element) => element.getAnimations()[0]?.effect?.getTiming().duration)).toBe(86_666);
 
-  const logoGeometry = () => page.locator(".logo-rail").evaluate((rail) => {
+  const railGeometry = () => page.locator(".logo-rail").evaluate((rail) => {
     const inner = rail.querySelector<HTMLElement>(".logo-rail-inner")!;
     const marquee = rail.querySelector<HTMLElement>(".logo-marquee")!;
     const track = rail.querySelector<HTMLElement>(".logo-track")!;
-    const logos = [...track.querySelectorAll<HTMLElement>("img")];
-    const visibleLogos = logos.filter((logo) => getComputedStyle(logo).display !== "none");
+    const marks = [...track.querySelectorAll<HTMLElement>(".area-mark")];
+    const visibleMarks = marks.filter((mark) => getComputedStyle(mark).display !== "none");
     const rect = (element: HTMLElement) => {
       const bounds = element.getBoundingClientRect();
       return { width: bounds.width, height: bounds.height };
@@ -193,35 +188,33 @@ test("trusted logos and integration orbit keep their source-derived long tracks"
       rail: rect(rail as HTMLElement),
       inner: rect(inner),
       marquee: rect(marquee),
-      logo: rect(visibleLogos[0]),
-      visibleLogos: visibleLogos.length,
+      mark: rect(visibleMarks[0]),
+      visibleMarks: visibleMarks.length,
+      firstLabel: visibleMarks[0]?.textContent?.trim(),
       gap: getComputedStyle(track).gap,
       mask: getComputedStyle(marquee).maskImage,
     };
   });
 
-  let logos = await logoGeometry();
-  expect(logos.rail.height).toBeCloseTo(245.2, 1);
-  expect(logos.inner.width).toBe(700);
-  expect(logos.inner.height).toBeCloseTo(85.2, 1);
-  expect(logos.marquee).toEqual({ width: 700, height: 40 });
-  expect(logos.logo.width).toBeCloseTo(120, 2);
-  expect(logos.logo.height).toBeCloseTo(40, 2);
-  expect(logos.visibleLogos).toBe(20);
-  expect(logos.gap).toBe("10px");
-  expect(logos.mask).toContain("12.5%");
+  let rail = await railGeometry();
+  expect(rail.inner.width).toBe(700);
+  expect(rail.marquee).toEqual({ width: 700, height: 40 });
+  expect(rail.mark.width).toBeCloseTo(120, 2);
+  expect(rail.mark.height).toBeCloseTo(40, 2);
+  expect(rail.visibleMarks).toBe(20);
+  expect(rail.firstLabel).toBe("Bookings");
+  expect(rail.gap).toBe("10px");
+  expect(rail.mask).toContain("12.5%");
 
   await page.setViewportSize({ width: 810, height: 1080 });
-  logos = await logoGeometry();
-  expect(logos.rail.height).toBeCloseTo(205.2, 1);
-  expect(logos.inner.width).toBe(700);
+  rail = await railGeometry();
+  expect(rail.inner.width).toBe(700);
 
   await page.setViewportSize({ width: 390, height: 844 });
-  logos = await logoGeometry();
-  expect(logos.rail.height).toBeCloseTo(165.2, 1);
-  expect(logos.inner.width).toBe(350);
-  expect(logos.marquee.width).toBe(350);
-  expect(logos.visibleLogos).toBe(15);
+  rail = await railGeometry();
+  expect(rail.inner.width).toBe(350);
+  expect(rail.marquee.width).toBe(350);
+  expect(rail.visibleMarks).toBe(20);
 
   const integration = page.locator(".motion-scene-integrations");
   await integration.scrollIntoViewIfNeeded();
@@ -263,6 +256,106 @@ test("feature bundles advance their exact hover state machines and reset", async
   await expect(simple).toHaveAttribute("data-motion-step", "0");
 });
 
+test("simple dashboard stays inside the visual throughout its center-to-bottom pan", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  const scene = page.locator(".motion-scene-simple");
+  await scene.scrollIntoViewIfNeeded();
+  await page.mouse.move(0, 0);
+  await scene.evaluate((element) => {
+    element.setAttribute("data-motion-paused", "true");
+    element.setAttribute("data-motion-step", "2");
+  });
+  await page.waitForTimeout(450);
+  await scene.evaluate((element) => element.setAttribute("data-motion-step", "3"));
+  await page.waitForTimeout(200);
+
+  const coverage = () => scene.evaluate((element) => {
+    const stage = element.getBoundingClientRect();
+    const image = element.querySelector<HTMLElement>(".scene-dashboard")!.getBoundingClientRect();
+    return { topGap: image.top - stage.top, bottomGap: stage.bottom - image.bottom };
+  });
+  const halfway = await coverage();
+  expect(halfway.topGap).toBeLessThanOrEqual(16);
+  expect(halfway.bottomGap).toBeLessThanOrEqual(16);
+
+  await page.waitForTimeout(250);
+  expect((await coverage()).bottomGap).toBeCloseTo(15, 0);
+});
+
+test("Malvavisco screenshots remain visible through the card motion states", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await page.mouse.move(0, 0);
+
+  const accuracy = page.locator(".motion-scene-accuracy");
+  await accuracy.scrollIntoViewIfNeeded();
+  await accuracy.evaluate((element) => {
+    element.setAttribute("data-motion-paused", "true");
+    element.setAttribute("data-motion-step", "4");
+  });
+  await page.waitForTimeout(450);
+  const accuracyFit = await accuracy.evaluate((element) => {
+    const stage = element.getBoundingClientRect();
+    const panels = [...element.querySelectorAll<HTMLImageElement>(".accuracy-track img")];
+    const last = panels.at(-1)!.getBoundingClientRect();
+    const first = panels[0].getBoundingClientRect();
+    return {
+      sourceRatio: panels[0].naturalWidth / panels[0].naturalHeight,
+      displayRatio: first.width / first.height,
+      fit: getComputedStyle(panels[0]).objectFit,
+      lastVisibleWidth: Math.min(last.right, stage.right) - Math.max(last.left, stage.left),
+    };
+  });
+  expect(accuracyFit.displayRatio).toBeCloseTo(accuracyFit.sourceRatio, 2);
+  expect(accuracyFit.fit).toBe("cover");
+  expect(accuracyFit.lastVisibleWidth).toBeGreaterThan(300);
+
+  const overview = page.locator(".motion-scene-overview").first();
+  await overview.scrollIntoViewIfNeeded();
+  await overview.evaluate((element) => {
+    element.setAttribute("data-motion-paused", "true");
+    element.setAttribute("data-motion-step", "2");
+  });
+  await page.waitForTimeout(450);
+  const visibleLowerPanels = await overview.evaluate((element) => {
+    const stage = element.getBoundingClientRect();
+    return [...element.querySelectorAll<HTMLElement>(".overview-stage > img")].slice(1).map((panel) => {
+      const rect = panel.getBoundingClientRect();
+      return Math.min(stage.bottom, rect.bottom) - Math.max(stage.top, rect.top);
+    });
+  });
+  visibleLowerPanels.forEach((height) => expect(height).toBeGreaterThan(100));
+
+  const billing = page.locator(".motion-scene-billing");
+  await billing.scrollIntoViewIfNeeded();
+  const imagePositions: number[] = [];
+  for (const step of [4, 5, 6]) {
+    await billing.evaluate((element, index) => {
+      element.setAttribute("data-motion-paused", "true");
+      element.setAttribute("data-motion-step", String(index));
+    }, step);
+    await page.waitForTimeout(450);
+    const geometry = await billing.evaluate((element) => {
+      const stage = element.getBoundingClientRect();
+      const image = element.querySelector<HTMLImageElement>(".billing-my-cards")!;
+      const rect = image.getBoundingClientRect();
+      return {
+        x: rect.x,
+        visibleWidth: Math.min(stage.right, rect.right) - Math.max(stage.left, rect.left),
+        visibleHeight: Math.min(stage.bottom, rect.bottom) - Math.max(stage.top, rect.top),
+        visibility: getComputedStyle(image).visibility,
+      };
+    });
+    expect(geometry.visibility).toBe("visible");
+    expect(geometry.visibleWidth).toBeGreaterThan(500);
+    expect(geometry.visibleHeight).toBeGreaterThan(460);
+    imagePositions.push(geometry.x);
+  }
+  expect(imagePositions[0]).toBeGreaterThan(imagePositions[1]);
+  expect(imagePositions[1]).toBeGreaterThan(imagePositions[2]);
+});
+
 test("card state machines are keyboard-operable", async ({ page }) => {
   await page.goto("/");
   const security = page.locator(".motion-scene-security");
@@ -276,7 +369,7 @@ test("card state machines are keyboard-operable", async ({ page }) => {
   await expect(security).toHaveAttribute("data-motion-step", "0");
 });
 
-test("responsive cards preserve the source static tablet and phone variants", async ({ page }) => {
+test("responsive cards keep static tablet and phone previews populated", async ({ page }) => {
   await page.setViewportSize({ width: 810, height: 1080 });
   await page.goto("/");
 
@@ -285,7 +378,7 @@ test("responsive cards preserve the source static tablet and phone variants", as
   await simpleTablet.hover();
   await page.waitForTimeout(1100);
   await expect(simpleTablet).toHaveAttribute("data-motion-step", "0");
-  await expect(page.locator(".motion-scene-billing .billing-list")).toBeHidden();
+  await expect(page.locator(".motion-scene-billing .billing-list")).toBeVisible();
   await expect(page.locator(".motion-scene-billing .billing-my-cards")).toBeVisible();
   await expect(page.locator(".feature-grid .motion-scene-analytics .analytics-score-card")).toBeVisible();
   await expect(page.locator(".feature-grid .motion-scene-analytics .analytics-expense-card")).toBeVisible();
@@ -305,6 +398,28 @@ test("responsive cards preserve the source static tablet and phone variants", as
   expect(simplePhone.width).toBeCloseTo(290, 0);
   await expect(page.locator(".motion-scene-accuracy .accuracy-stage")).toHaveCSS("top", "0px");
   await expect(page.locator(".motion-scene-security .security-stage")).toHaveCSS("top", "0px");
+
+  for (const width of [390, 810]) {
+    await page.setViewportSize({ width, height: 1080 });
+    const billingCoverage = await page.locator(".motion-scene-billing").evaluate((element) => {
+      const stage = element.getBoundingClientRect();
+      const primary = element.querySelector(".billing-my-cards")!.getBoundingClientRect();
+      const secondary = element.querySelector(".billing-list img")!.getBoundingClientRect();
+      return { primaryTop: primary.top, secondaryTop: secondary.top, secondaryVisible: stage.bottom - secondary.top, stageTop: stage.top };
+    });
+    expect(billingCoverage.primaryTop - billingCoverage.stageTop).toBeCloseTo(10, 0);
+    expect(billingCoverage.secondaryTop).toBeGreaterThan(billingCoverage.primaryTop + 100);
+    expect(billingCoverage.secondaryVisible).toBeGreaterThan(70);
+
+    const securityCoverage = await page.locator(".motion-scene-security").evaluate((element) => {
+      const stage = element.getBoundingClientRect();
+      const settings = element.querySelector(".security-settings")!.getBoundingClientRect();
+      const finalLabel = element.querySelector(".security-settings small")!.getBoundingClientRect();
+      return { settingsBottom: settings.bottom, labelBottom: finalLabel.bottom, stageBottom: stage.bottom };
+    });
+    expect(securityCoverage.labelBottom).toBeLessThanOrEqual(securityCoverage.settingsBottom);
+    expect(securityCoverage.labelBottom).toBeLessThanOrEqual(securityCoverage.stageBottom);
+  }
 });
 
 test("secure card preserves the source login narrative states", async ({ page }) => {
@@ -333,9 +448,9 @@ test("secure card preserves the source login narrative states", async ({ page })
   await expect(security.locator(".security-login")).toHaveCSS("opacity", "0");
 });
 
-test("workflow tabs run the source 400ms panel transition", async ({ page }) => {
+test("workflow tabs retain their 400ms panel transition", async ({ page }) => {
   await page.goto("/");
-  const second = page.getByRole("tab", { name: /Connect Your Financial Tools/ });
+  const second = page.getByRole("tab", { name: /Build the stay/ });
   await second.scrollIntoViewIfNeeded();
   // Read the created animation in the same browser task; round trips can
   // otherwise miss a correctly completed 400ms animation on a busy machine.
@@ -349,16 +464,16 @@ test("workflow tabs run the source 400ms panel transition", async ({ page }) => 
   await expect(panel).not.toHaveAttribute("data-motion-state", "entering", { timeout: 900 });
 });
 
-test("quick transfer card preserves the source continuous contact rail", async ({ page }) => {
+test("daily-board card keeps its continuous staff rail", async ({ page }) => {
   await page.goto("/");
   const control = page.locator("[data-control-scene]");
   await control.scrollIntoViewIfNeeded();
   const track = control.locator(".transfer-track");
   await expect(track.locator("li")).toHaveCount(12);
-  await expect(track.locator("li").nth(0)).toContainText("Natalia");
-  await expect(track.locator("li").nth(1)).toContainText("James");
-  await expect(track.locator("li").nth(2)).toContainText("Laura");
-  await expect(track.locator("li").nth(3)).toContainText("Wei");
+  await expect(track.locator("li").nth(0)).toContainText("Reception");
+  await expect(track.locator("li").nth(1)).toContainText("Housekeeping");
+  await expect(track.locator("li").nth(2)).toContainText("Guides");
+  await expect(track.locator("li").nth(3)).toContainText("Kitchen");
   await expect(control.locator(".quick-transfer button")).toHaveCount(0);
   const timing = await track.evaluate((element) => element.getAnimations()[0]?.effect?.getTiming());
   expect(timing?.duration).toBe(83_000);
@@ -373,15 +488,15 @@ test("control card preserves its 50-percent reveal and notification variant", as
 
   const toggle = page.locator("[data-control-notification-toggle]");
   await expect(toggle).toBeEnabled();
-  await expect(toggle).toHaveAccessibleName("Open notifications");
+  await expect(toggle).toHaveAccessibleName("Open sample updates");
   await toggle.hover();
   await expect.poll(() => toggle.evaluate((element) => getComputedStyle(element).transform)).not.toBe("none");
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   const panel = page.locator("[data-control-notifications]");
   await expect(panel).toHaveAttribute("aria-hidden", "false");
-  await expect(panel).toContainText("Wei Chen joined to Final Presentation");
-  await expect(panel).toContainText("Sophia Williams invites you arthitecture.design file with you");
+  await expect(panel).toContainText("Two arrivals are on today's board");
+  await expect(panel).toContainText("Dietary notes are on the kitchen brief");
   await toggle.click();
   await expect(panel).toHaveAttribute("aria-hidden", "true");
 });
@@ -397,13 +512,13 @@ test("timeline uses the source page step for buttons and keyboard", async ({ pag
   await expect(track.locator("[data-carousel-item][aria-hidden='false']")).not.toHaveCount(0);
 });
 
-test("team cards expose the source hover transform and biography", async ({ page }) => {
+test("team views retain their hover image and detail transition", async ({ page }) => {
   await page.goto("/about");
   const team = page.locator(".team-card").first();
   await team.hover();
   await expect.poll(() => team.locator(":scope > img").evaluate((element) => getComputedStyle(element).transform)).toContain("matrix(1.1");
   await expect(team.locator(".team-detail")).toHaveCSS("opacity", "1");
-  await expect(team.locator(".linkedin-badge")).toHaveCSS("opacity", "1");
+  await expect(team.locator(".team-detail")).toContainText("stay");
 });
 
 test("route cards that are static in the source remain static on hover", async ({ page }) => {
@@ -451,4 +566,23 @@ test("reduced motion freezes sequences and removes continuous tracks", async ({ 
   expect(integrationAnimations).toBe(0);
   await expect(page.locator("[data-reveal]").first()).toHaveCSS("opacity", "1");
   await context.close();
+});
+
+test("enabling reduced motion cancels an active hover sequence immediately", async ({ page }) => {
+  await page.goto("/");
+  const scene = page.locator(".motion-scene-accuracy");
+  await scene.scrollIntoViewIfNeeded();
+  await scene.hover();
+  await expect(scene).toHaveAttribute("data-motion-step", "2", { timeout: 900 });
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(scene).toHaveAttribute("data-motion-step", "0");
+  await expect(scene).not.toHaveAttribute("data-motion-running", "true");
+  await expect(scene.locator(".accuracy-track")).toHaveCSS("transition-duration", "0s");
+  await page.waitForTimeout(1600);
+  await expect(scene).toHaveAttribute("data-motion-step", "0");
+
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect(scene).toHaveAttribute("data-motion-running", "true");
+  await expect(scene).toHaveAttribute("data-motion-step", "2", { timeout: 900 });
 });

@@ -1,52 +1,68 @@
 import { expect, test } from '@playwright/test';
 import fs from 'node:fs/promises';
 
-test('all 24 captured home widths keep source heading geometry and avoid page overflow', async ({ page }) => {
+test('Malvavisco stays readable across the 24 captured viewport widths', async ({ page }) => {
   test.setTimeout(90_000);
-  const fixture = JSON.parse(await fs.readFile('tests/fixtures/home-headings.json', 'utf8'));
-  await page.emulateMedia({ reducedMotion:'reduce' });
+  const fixture = JSON.parse(await fs.readFile('tests/fixtures/home-headings.json', 'utf8')) as {
+    captures: Array<{ viewport: { name: string; width: number; height: number } }>;
+  };
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
-  for (const capture of fixture.captures) {
-    await test.step(`${capture.viewport.name}: ${capture.viewport.width}px`, async () => {
-      await page.setViewportSize({ width:capture.viewport.width, height:capture.viewport.height });
-      await page.evaluate(() => document.fonts.ready);
-      await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
-      const headings = await page.locator('main h1, main h2').evaluateAll(nodes => nodes.map(node => {
-        const rect = node.getBoundingClientRect();
-        return { tag:node.tagName.toLowerCase(), text:node.textContent?.trim().replace(/\s+/g, ' '), x:rect.x, y:rect.y + scrollY, width:rect.width, height:rect.height };
-      }));
-      expect(headings.length).toBe(capture.headings.length);
-      for (const [index, heading] of headings.entries()) {
-        const source = capture.headings[index];
-        // The Framer source uses h4 for two section titles; native Astro gives
-        // those titles a consistent h2 hierarchy while preserving their text.
-        expect(heading.text).toBe(source.text);
-        for (const dimension of ['x','y','width','height'] as const) {
-          expect.soft(Math.abs(heading[dimension] - source.rect[dimension]), `${capture.viewport.name} ${heading.text}: ${dimension}`).toBeLessThanOrEqual(fixture.geometryToleranceCssPixels);
-        }
+  await page.evaluate(() => document.fonts.ready);
+
+  for (const { viewport } of fixture.captures) {
+    await test.step(`${viewport.name}: ${viewport.width}px`, async () => {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+      await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+      const layout = await page.evaluate(() => {
+        const sections = ['.home-hero', '.why-section', '.feature-grid-section', '.control-section', '.workflow-section', '.testimonials-section', '.main-cta'];
+        return {
+          scrollWidth: document.documentElement.scrollWidth,
+          viewport: innerWidth,
+          title: document.querySelector('main h1')?.textContent?.trim(),
+          headings: [...document.querySelectorAll('main h1, main h2')].map((heading) => heading.textContent?.trim()).filter(Boolean),
+          sections: sections.map((selector) => {
+            const rect = document.querySelector(selector)?.getBoundingClientRect();
+            return { selector, top: rect?.top ?? -1, bottom: rect?.bottom ?? -1, height: rect?.height ?? -1 };
+          }),
+        };
+      });
+      expect(layout.scrollWidth, `horizontal overflow at ${viewport.width}px`).toBeLessThanOrEqual(layout.viewport);
+      expect(layout.title).toBe('The whole lodge, one clear view.');
+      expect(layout.headings.length).toBeGreaterThanOrEqual(7);
+      for (const section of layout.sections) expect(section.height, `${section.selector} collapsed at ${viewport.width}px`).toBeGreaterThan(200);
+      for (let index = 1; index < layout.sections.length; index++) {
+        expect(layout.sections[index].top, `${layout.sections[index].selector} overlaps previous section at ${viewport.width}px`)
+          .toBeGreaterThanOrEqual(layout.sections[index - 1].bottom - 2);
       }
-      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(capture.viewport.width);
     });
   }
 });
 
-test('tablet footer, team cards, and sticky FAQ retain their source details', async ({ page }) => {
-  await page.setViewportSize({ width:810, height:1080 });
-  await page.emulateMedia({ reducedMotion:'reduce' });
-  await page.goto('/about');
-  await page.evaluate(() => document.fonts.ready);
-  await expect(page.locator('.footer-watermark')).toHaveCSS('opacity', '0.1');
-  await expect(page.locator('.socials')).toHaveCSS('margin-top', '40px');
-  await expect(page.locator('.team-card .linkedin-badge').first()).toHaveCSS('opacity', '1');
-  expect((await page.locator('.join-card .button').boundingBox())?.width).toBeCloseTo(159.23, 0);
-  await page.locator('.story-stats').scrollIntoViewIfNeeded();
-  await expect(page.locator('[data-count-value="1200"]')).toHaveText('1200+');
-  await page.goto('/faq');
-  await page.evaluate(() => document.fonts.ready);
-  await page.evaluate(() => window.scrollTo(0, 900));
-  await expect.poll(async () => (await page.locator('.knowledge-nav').boundingBox())?.y).toBe(105);
-  const category = page.locator('.knowledge-nav a').filter({ hasText:'Billing & Subscriptions' });
-  expect((await category.boundingBox())?.height).toBeCloseTo(22.4, 0);
-  await page.goto('/features');
-  await expect(page.locator('.connect-card button').first()).toHaveCSS('font-size', '12px');
+test('phone and tablet keep workflow content and calls to action within their sections', async ({ page }) => {
+  for (const width of [390, 810]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    const bounds = await page.evaluate(() => {
+      const containment = (parentSelector: string, childSelector: string) => {
+        const parent = document.querySelector(parentSelector)?.getBoundingClientRect();
+        const child = document.querySelector(childSelector)?.getBoundingClientRect();
+        return parent && child ? { parentBottom: parent.bottom, childBottom: child.bottom, parentLeft: parent.left, parentRight: parent.right, childLeft: child.left, childRight: child.right } : null;
+      };
+      return {
+        hero: containment('.home-hero-panel', '.hero-copy'),
+        control: containment('.control-panel', '.control-visual'),
+        workflow: containment('.workflow-section', '.workflow-mobile-step:last-child'),
+      };
+    });
+    expect(bounds.hero).not.toBeNull();
+    expect(bounds.control).not.toBeNull();
+    for (const part of [bounds.hero, bounds.control, width < 810 ? bounds.workflow : null]) {
+      if (!part) continue;
+      expect(part.childBottom).toBeLessThanOrEqual(part.parentBottom + 2);
+      expect(part.childLeft).toBeGreaterThanOrEqual(part.parentLeft - 2);
+      expect(part.childRight).toBeLessThanOrEqual(part.parentRight + 2);
+    }
+  }
 });

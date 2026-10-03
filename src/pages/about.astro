@@ -1,57 +1,51 @@
 ---
 import Badge from '../components/Badge.astro';
 import UiIcon from '../components/UiIcon.astro';
-import BaseLayout from "../layouts/BaseLayout.astro";
-import PageHero from "../components/PageHero.astro";
-import SectionHeader from "../components/SectionHeader.astro";
-import { image } from "../data/site";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
 
-const timeline = [
-  ["2025", "Global Trust & Innovation", "Surpassed 10,000 active users", "Added 50+ new integrations with top tools", "Released AI-powered financial insights engine", "Rated 98% satisfaction across customer feedback surveys"],
-  ["2024", "Rapid Growth & Expansion", "Reached 5,000 users across 20+ countries", "Launched real-time dashboard & reporting tools", "Rolled out enterprise-grade security features", "Doubled team size to support scaling efforts"],
-  ["2023", "Building the Foundation", "Launched private beta to early users", "Collected 1,000+ pieces of feedback and iterated rapidly", "Introduced automated workflows and smart tracking", "First integration partnerships announced"],
-  ["2022", "The Beginning", "Idea sparked from real frustrations with existing tools", "Founding team formed: product, design, and finance experts", "Extensive research and user interviews began", "First product prototype developed"],
+const journey = [
+  ['01', 'Describe Your Place', 'Add properties, rooms and capacities', 'Set rates, taxes and booking sources', 'Define services, products and equipment', 'Invite staff into the right roles'],
+  ['02', 'Take the Booking', 'Quote from configured prices', 'Choose rooms for a whole or split stay', 'Record the group, charges and notes', 'Check availability again on save'],
+  ['03', 'Run the Stay', 'Assign guides and gear to purchased activities', 'See arrivals, tasks and housekeeping', 'Send booking-linked sales to kitchen', 'Keep each team on the same plan'],
+  ['04', 'Close the Books', 'Record and allocate manual payments', 'Attach scanned receipt evidence', 'Print the booking invoice', 'Review currency-specific reports'],
 ] as const;
 
-const team = [
-  ["Sofia K.", "Co-Founder & CEO", "Leads with strategy, empathy, and product vision. Passionate about building meaningful, lasting software.", "52tSqlyYoXzLpzEsNuYuettroE.jpg"],
-  ["Kei Tanaka", "Head of Design", "Designs clean, intuitive interfaces that make complex data feel effortless to use.", "3EYIGYCKylkudb3ltH1cFTW5Fr4.jpg"],
-  ["Mateo R.", "Lead Engineer", "Scales fast, secure infrastructure with precision. Focused on performance and reliability.", "WQjXKQ2H6gTpt3TcGz0cSq3TCk.jpg"],
-  ["Amira F.", "Head of Customer Experience", "Bridges product and people with care. Champions support that feels personal and fast.", "UFS9v6pjZTMjNGU7ioCTrL1RA.jpg"],
-  ["Noah D.", "Data & Insights Lead", "Transforms financial data into real-time decisions with clarity and context.", "4KHS65NrqP1HyW6PPmEyCcaWoE.jpg"],
+const teamViews = [
+  ['Front desk', 'Bookings and guests', 'A stay’s rooms, charges, group and messages in one record.', '/product/booking.webp'],
+  ['Operations', 'Crew and assets', 'Schedule guides, horses, boats and vehicles for concrete times.', '/product/calendar-crew.webp'],
+  ['Kitchen', 'Tickets and meals', 'Prepare booking-linked orders and see dietary context.', '/product/kitchen.webp'],
+  ['Housekeeping', 'Rooms and tasks', 'See what needs turning, cleaning and inspection.', '/product/operations.webp'],
+  ['Finance', 'Payments and reports', 'Follow charges, balances, receipts and exports.', '/product/reports.webp'],
 ] as const;
 ---
 
-<BaseLayout>
+<BaseLayout title="About Malvavisco — Makers of LodgeOps" description="Malvavisco makes LodgeOps, administration software shaped around the work of running a lodge.">
   <PageHero
     pageClass="about-hero"
-    breadcrumb="About Us"
-    title="Empowering Modern Businesses to Master Their Finances"
-    description="We believe financial clarity should be simple, powerful, and accessible for every team."
-    images={[
-      image("fStSDPAwOmP29QE4i3i7J9FCEo.jpg"),
-      image("bFWNKZ9O1m6QI6MeeQlOyKQ34.jpg"),
-      image("iSW4usePzkL3SECj4U7aSvH9nLA.jpg"),
-      image("JpM3QyQMqAQjyzF86DtyDH4w.jpg"),
-    ]}
+    compact
+    breadcrumb="About Malvavisco"
+    title="A Calmer Way to Run Your Lodge"
+    description="Malvavisco makes LodgeOps so the people who run a lodge can keep bookings, guides, kitchen work and the books together, then get back to their guests."
   />
 
   <section class="about-story section-pad">
     <div class="shell story-grid">
       <div class="story-media">
-        <img src={image("jg1R0cXNqUW40KaF97s2dUUkwI.jpg")} alt="Artho workspace" />
-        <div class="story-stats"><div><strong data-count-value="1200" data-count-suffix="+" data-count-grouping="false">1200+</strong><span>Users Worldwide</span></div><div><strong data-count-value="98" data-count-suffix="%">98%</strong><span>Satisfaction Rate</span></div><div><strong data-count-value="99.9" data-count-suffix="%" data-count-decimals="1">99.9%</strong><span>Bank-Level Security</span></div></div>
+        <img src="/product/dashboard.webp" alt="LodgeOps dashboard filled with fictional sample lodge data" loading="lazy" />
+        <div class="story-stats"><div><strong data-count-value="11">11</strong><span>Staff Roles</span></div><div><strong data-count-value="2">2</strong><span>Staff Languages</span></div><div><strong data-count-value="3">3</strong><span>Calendar Views</span></div></div>
       </div>
       <div class="story-copy">
-        <Badge label="Who We Are" />
-        <h2>A Team Obsessed with Simplicity, Backed by Real Results</h2>
-        <p>We’re a team of builders, designers, and finance nerds who believe that managing money shouldn’t feel overwhelming. With backgrounds in tech, startups, and finance, we’ve come together with a shared mission: to make financial tools that are powerful, yet feel effortless.</p>
-        <p>We’re not just building software—we’re building a better way for businesses to understand, manage, and grow their money.</p>
-        <h3>Our DNA</h3>
+        <Badge label="Why We Exist" />
+        <h2>Hospitality Happens Away from the Keyboard</h2>
+        <p>A lodge day rarely follows a neat itinerary. A new arrival changes rooms, a guide needs a boat, lunch goes on the right booking and someone needs the latest balance. LodgeOps puts those connected tasks in one workspace.</p>
+        <p>We build around the routines of front desk, operations, kitchen, housekeeping and finance teams. The goal is straightforward software with a clear record of what happened.</p>
+        <h3>Our House Rules</h3>
         <ul class="story-values">
-          <li><span>✓</span>We build tools that feel natural to use. Everything is designed to reduce friction, not create more.</li>
-          <li><span>✓</span>We turn complex data into simple visuals and actions so you can make decisions with confidence—not confusion.</li>
-          <li><span>✓</span>We listen, ship fast, and never stop iterating. Our roadmap is shaped by real users and real needs.</li>
+          <li><span>✓</span>Calm is a feature: make the next action clear when the day gets busy.</li>
+          <li><span>✓</span>Keep the work together: rooms, activities, meals and money belong to the same stay.</li>
+          <li><span>✓</span>Give straight answers about what LodgeOps does today and what still needs work.</li>
         </ul>
       </div>
     </div>
@@ -60,20 +54,20 @@ const team = [
   <section class="journey-section section-pad">
     <div class="journey-panel shell" data-carousel>
       <div class="journey-head">
-        <div><Badge label="Our Journey" /><h2>From Frustration to a Smarter Financial Future</h2></div>
-        <p>What started as a small team with a big idea has grown into a trusted platform used by thousands. Here's how we got here:</p>
+        <div><Badge label="One Connected Stay" /><h2>From First Inquiry to Final Bill</h2></div>
+        <p>These are the steps LodgeOps joins up for a lodge team. Drag the cards or use the arrow keys to explore.</p>
       </div>
       <div class="journey-carousel">
-        <div class="journey-track" data-carousel-track tabindex="0" role="region" aria-roledescription="carousel" aria-label="Artho timeline. Drag or use arrow keys to explore.">
-          {timeline.map(([year, title, ...points]) => (
-            <article data-carousel-item aria-roledescription="slide"><h3>{year}</h3><p>{title}</p><ul>{points.map((point) => <li><span><UiIcon name="check" size={14} /></span>{point}</li>)}</ul></article>
+        <div class="journey-track" data-carousel-track tabindex="0" role="region" aria-roledescription="carousel" aria-label="LodgeOps workflow. Drag or use arrow keys to explore.">
+          {journey.map(([number, title, ...points]) => (
+            <article data-carousel-item aria-roledescription="slide"><h3>{number}</h3><p>{title}</p><ul>{points.map((point) => <li><span><UiIcon name="check" size={14} /></span>{point}</li>)}</ul></article>
           ))}
         </div>
         <fieldset class="carousel-controls" aria-label="Carousel pagination controls">
-          <button class="carousel-button previous" type="button" data-carousel-button="previous" aria-label="Previous timeline item">
+          <button class="carousel-button previous" type="button" data-carousel-button="previous" aria-label="Previous workflow item">
             <img src="/assets/framerusercontent.com/images/6tTbkXggWgQCAJ4DO2QEdXXmgM.svg" alt="" width="40" height="40" />
           </button>
-          <button class="carousel-button next" type="button" data-carousel-button="next" aria-label="Next timeline item">
+          <button class="carousel-button next" type="button" data-carousel-button="next" aria-label="Next workflow item">
             <img src="/assets/framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg" alt="" width="40" height="40" />
           </button>
         </fieldset>
@@ -83,20 +77,17 @@ const team = [
 
   <section class="team-section section-pad">
     <div class="shell">
-      <SectionHeader eyebrow="Our Team" title="The People Behind the Platform" description="We’re a team of curious builders, thoughtful designers, and finance-minded problem-solvers. Together, we’re on a mission to make financial tools that are as smart as they are simple." />
+      <SectionHeader eyebrow="For Every Team" title="The Same Stay, Seen from Each Role" description="These are real areas of the LodgeOps staff app, shown with fictional sample lodge data." />
       <div class="team-grid">
-        {team.map(([name, role, details, asset]) => (
-          <article class="team-card">
-            <img src={image(asset)} alt={name} />
+        {teamViews.map(([name, role, details, asset]) => (
+          <article class="team-card" tabindex="0">
+            <img src={asset} alt={`${name} view in LodgeOps`} loading="lazy" />
             <div class="team-card-content">
-              <a class="linkedin-badge" href="https://www.linkedin.com/" rel="noopener" aria-label={`${name} on LinkedIn`}>
-                <img src="/assets/framerusercontent.com/images/pC32L6j5QOm1Ihk4pR2eWPcqnc.svg" alt="" width="24" height="24" />
-              </a>
               <div class="team-card-details"><h3>{name}</h3><p>{role}</p><p class="team-detail">{details}</p></div>
             </div>
           </article>
         ))}
-        <article class="join-card"><h3>Join the team</h3><p>If you're interested in joining our team, please let us know your skills and experience, and we'll be happy to discuss potential opportunities with you.</p><a class="button button-dark compact" href="https://www.linkedin.com/jobs/">We Are Hiring <span class="button-arrow">→</span></a></article>
+        <article class="join-card"><h3>Show us your week</h3><p>Bring your rooms, activities and the tricky parts of a typical day. We’ll walk through them in LodgeOps and talk about fit.</p><a class="button button-dark compact" href="/contact">Request a Demo <span class="button-arrow">→</span></a></article>
       </div>
     </div>
   </section>

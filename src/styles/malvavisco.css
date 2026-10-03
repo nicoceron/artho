@@ -1,0 +1,162 @@
+/* Product-specific visuals layered after the preserved Artho motion/layout rules. */
+:root {
+  --ink: #13231b;
+  --muted: rgba(19, 35, 27, .7);
+  --lime: #d9ed8c;
+  --green: #397a57;
+  --blue-soft: #e7efe8;
+  --mint-soft: #e7f2e9;
+  --pink-soft: #f6ebdf;
+  --lavender-soft: #eeeee5;
+  --cream-soft: #f7efe3;
+}
+
+.home-hero-panel {
+  background: linear-gradient(145deg, #f7efe2, #e9f0e7 70%, #dfe9dc);
+}
+
+.hero-copy > p { max-width: 650px; }
+.hero-floating-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  overflow: hidden;
+  border: 1px solid rgba(19, 35, 27, .11);
+  border-radius: 14px;
+  background: #fffdf8;
+  padding: clamp(10px, 1.6vw, 22px);
+  box-shadow: 0 24px 50px rgba(19, 35, 27, .12);
+  color: var(--ink);
+  line-height: 1.2;
+}
+.hero-floating-card > span {
+  color: #397a57;
+  font-size: clamp(8px, .95vw, 12px);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.hero-floating-card > strong { font-size: clamp(11px, 1.45vw, 20px); line-height: 1.12; }
+.hero-floating-card > small { color: var(--muted); font-size: clamp(8px, .95vw, 12px); }
+.product-screen-note {
+  position: absolute;
+  z-index: 5;
+  right: 86px;
+  bottom: 12px;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, .94);
+  padding: 7px 12px;
+  color: var(--muted);
+  font-size: 11px;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, .08);
+}
+
+.preview-check {
+  display: grid;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  place-items: center;
+  border-radius: 3px;
+  background: #d9ed8c;
+  font-size: 11px;
+}
+.workflow-preview-stage .preview-card-header h3 { font-weight: 650; }
+.workflow-preview-stage .auth-card { min-height: 525px; }
+.workflow-preview-stage .auth-social span { white-space: nowrap; }
+.workflow-dashboard img { width: 100%; height: 100%; object-fit: cover; object-position: 22% top; }
+
+.security-stage { font-family: inherit; }
+.security-grid {
+  background-color: #edf4ec;
+  background-image: linear-gradient(rgba(19,35,27,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(19,35,27,.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.security-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(19, 35, 27, .12);
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 15px 40px rgba(19, 35, 27, .08);
+}
+.security-settings-kicker {
+  color: #397a57;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.security-settings h4 { font-size: 20px; letter-spacing: -.03em; }
+.security-settings > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid rgba(19, 35, 27, .1);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 12px;
+}
+.security-settings > div b { color: #397a57; font-size: 11px; text-align: right; }
+.security-settings small { color: var(--muted); font-size: 10px; }
+.security-person {
+  display: grid;
+  place-items: center;
+  background: #d9ed8c;
+  color: var(--ink);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.accuracy-track img { object-fit: cover; object-position: left top; border-radius: 10px; }
+.overview-stage > img { height: auto; object-position: left top; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+.billing-list img { width: 210px; height: 240px; object-fit: cover; object-position: left top; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+.billing-my-cards { object-fit: cover; object-position: left top; }
+.budget-stage > img { height: 245px; object-fit: cover; object-position: left top; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+.analytics-balance-card { object-fit: cover; object-position: left top; }
+.integration-stage { background: #edf4ec; }
+.integration-center img { object-fit: contain; }
+.integration-orbit > span { color: #245c3d; font-size: 15px; font-weight: 800; }
+.integration-orbit > span[aria-label] { cursor: default; }
+
+.team-initial,
+.control-notification-mark {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  border-radius: 50%;
+  background: #d9ed8c;
+  color: #13231b;
+  font-size: 12px;
+  font-weight: 700;
+}
+.control-notification-mark { width: 40px; height: 40px; font-size: 15px; }
+.control-notifications-head > span { color: var(--muted); font-size: 11px; }
+.control-notification-tabs { justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; }
+.control-notification-item small { display: block; }
+.transfer-settings { width: auto; padding-inline: 12px; }
+
+.contact-section,
+.addons-section,
+.pricing-faq,
+.knowledge-section { height: auto; min-height: 0; }
+
+@media (max-width: 1199px) {
+  .security-settings { left: 90px; width: calc(100% - 105px); gap: 8px; padding: 12px; }
+  .security-settings h4 { font-size: 16px; }
+  .security-settings > div { padding: 8px; font-size: 10px; }
+  .security-settings > div b { font-size: 9px; }
+}
+
+@media (max-width: 809px) {
+  .hero-floating-card { width: 41%; padding: 9px; gap: 3px; }
+  .hero-floating-card > small { display: none; }
+  .product-screen-note { right: 14px; bottom: 10px; font-size: 9px; }
+}

@@ -5,7 +5,7 @@ import BlogCard from "../../components/BlogCard.astro";
 import articles from "../../data/articles.json";
 ---
 
-<BaseLayout>
-  <PageHero pageClass="blog-hero" compact breadcrumb="Blog" title="Insights, Tips & Tools for Smarter Financial Management" description="Explore expert articles, product updates, and actionable guides to help you grow, save time, and stay in control of your finances." />
+<BaseLayout title="Lodge Operations Guides — Malvavisco" description="Walk through real LodgeOps booking, activity, kitchen and finance workflows using a fictional sample lodge.">
+  <PageHero pageClass="blog-hero" compact breadcrumb="Guides" title="See How the Lodge Runs" description="Practical walkthroughs of the LodgeOps staff workflows, illustrated with a fictional sample lodge." />
   <section class="blog-index section-pad"><div class="shell blog-grid">{articles.map((article) => <BlogCard article={article} />)}</div></section>
 </BaseLayout>

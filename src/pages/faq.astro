@@ -1,23 +1,80 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import { faqGroups } from "../data/site";
 import faqAnswers from '../data/faq-answers.json';
+
+const faqGroups = [
+  {
+    title: "Getting Started",
+    description: "What LodgeOps is, which lodges it suits and how a workspace is configured.",
+    questions: [
+      "What is LodgeOps?",
+      "What kind of lodge is it for?",
+      "Can we manage more than one property?",
+      "Which languages does the staff app support?",
+      "How do we get started?",
+    ],
+  },
+  {
+    title: "Bookings & Calendar",
+    description: "Room plans, availability and the difference between selling and scheduling an activity.",
+    questions: [
+      "Can a booking use different rooms on different nights?",
+      "How does LodgeOps prevent double booking?",
+      "Are activities scheduled when they are sold?",
+      "What can we see in the calendar?",
+      "Does LodgeOps connect to Booking.com or Airbnb?",
+    ],
+  },
+  {
+    title: "Daily Operations",
+    description: "The kitchen, guides, equipment, staff roles and guest communications.",
+    questions: [
+      "How does the kitchen know what to prepare?",
+      "Can we schedule guides, horses and boats?",
+      "What can different staff roles see?",
+      "Can LodgeOps send guest reminders?",
+      "Does LodgeOps work without internet?",
+    ],
+  },
+  {
+    title: "Payments & Reports",
+    description: "What staff can record and export, and where provider and fiscal acceptance stand.",
+    questions: [
+      "Which payment methods can staff record?",
+      "Can guests pay online?",
+      "Is the printable invoice a fiscal document?",
+      "How are different currencies reported?",
+      "Can we export reports?",
+    ],
+  },
+  {
+    title: "Security & Boundaries",
+    description: "How access is controlled and which workflows are still outside the current product.",
+    questions: [
+      "How are staff permissions protected?",
+      "How are receipt attachments handled?",
+      "Can guests sign waivers or upload identity documents?",
+      "What is not included yet?",
+      "Are the product screenshots real?",
+    ],
+  },
+] as const;
 
 const sectionIds = [
   "getting-started",
-  "billing-subscriptions",
-  "features-tools",
-  "integrations",
-  "security-privacy",
+  "bookings-calendar",
+  "daily-operations",
+  "payments-reports",
+  "security-boundaries",
 ] as const;
 ---
 
-<BaseLayout>
-  <PageHero pageClass="faq-hero" compact breadcrumb="FAQ" title="Need Help? We've Got You Covered." description="Browse our knowledge base, get step-by-step guides, or contact support. Whether you're just getting started or troubleshooting, we’re here to help." />
+<BaseLayout title="Questions — LodgeOps by Malvavisco" description="Straight answers about LodgeOps setup, bookings, operations, payments, reporting and current limits.">
+  <PageHero pageClass="faq-hero" compact breadcrumb="Questions" title="Answers from the Front Desk" description="What LodgeOps does today, what takes setup and what is still outside the product. Bring anything else to your demo." />
   <section class="knowledge-section section-pad">
     <div class="shell knowledge-layout" data-scroll-sections>
-      <nav class="knowledge-nav" aria-label="FAQ categories">
+      <nav class="knowledge-nav" aria-label="Question categories">
         {faqGroups.map((group, index) => (
           <a href={`#${sectionIds[index]}`} data-scroll-link>{group.title}</a>
         ))}

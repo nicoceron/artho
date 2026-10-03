@@ -1,14 +1,7 @@
 ---
 import SectionHeader from "../SectionHeader.astro";
 import FeatureCard from './FeatureCard.astro';
-
-const features = [
-  ["Real-Time Financial Overview", "Get instant insights into your cash flow, expenses, and income—all updated live for smarter decisions.", "overview"],
-  ["Automated Billing & Payments", "Streamline invoicing with automation that sends reminders and tracks payments so you get paid faster.", "billing"],
-  ["Insightful Analytics", "Visualize your financial health with clear reports that highlight trends and opportunities to grow.", "analytics"],
-  ["Budget Planning", "Set custom budgets and get alerts to avoid overspending and keep your finances on track.", "budget"],
-  ["Seamless Integrations", "Connect smoothly with your favorite accounting, CRM, and payment apps for effortless workflow.", "integrations"],
-] as const;
+import { featureCards } from '../../data/malvavisco';
 ---
 
 <section class="feature-grid-section section-pad">
@@ -16,13 +9,13 @@ const features = [
     <div class="feature-grid">
       <div class="feature-top">
         <div class="feature-overview">
-          <SectionHeader align="left" eyebrow="Key Features" title="Powerful Features to Streamline Your Finances" description="Designed to simplify complex financial tasks, save you time, and give you full control with smart, easy-to-use tools." />
-          <FeatureCard index={1} title={features[0][0]} description={features[0][1]} scene={features[0][2]} />
+          <SectionHeader align="left" eyebrow="The workspace" title="All the moving parts, connected" description="Follow the booking from room plan to daily work, kitchen order and final balance." />
+          <FeatureCard index={1} title={featureCards[0].title} description={featureCards[0].description} scene={featureCards[0].scene} />
         </div>
-        <FeatureCard index={2} title={features[1][0]} description={features[1][1]} scene={features[1][2]} />
+        <FeatureCard index={2} title={featureCards[1].title} description={featureCards[1].description} scene={featureCards[1].scene} />
       </div>
       <div class="feature-bottom">
-        {features.slice(2).map(([title, description, scene], index) => <FeatureCard index={index + 3} title={title} description={description} scene={scene} />)}
+        {featureCards.slice(2).map((feature, index) => <FeatureCard index={index + 3} title={feature.title} description={feature.description} scene={feature.scene} />)}
       </div>
     </div>
   </div>

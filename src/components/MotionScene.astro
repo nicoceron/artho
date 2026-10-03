@@ -1,5 +1,5 @@
 ---
-import { image } from "../data/site";
+import { productScreenshots } from "../data/malvavisco";
 
 interface Props {
   scene: "simple" | "accuracy" | "security" | "overview" | "billing" | "analytics" | "budget" | "integrations";
@@ -9,36 +9,36 @@ interface Props {
 const { scene, context = 'feature' } = Astro.props;
 
 const overviewFrames = [
-  "vJYxHCfKAKRUlK9fuOJIkhTdQ.png",
-  "QGGnOpCVH61zwnUFlIS1pRElJs.png",
-  "d93U5p8ltofl5PSJQkUSS4eBQCo.png",
+  productScreenshots.calendar,
+  productScreenshots.crew,
+  productScreenshots.assets,
 ];
 const billingFrames = [
-  "ghc2cEELBUpeN3m8emhYgieZk.png",
-  "crniL1wF0hF21oWuxYAhEAxRtcM.png",
-  "V72Fh98CLIS8hNRPRJpeNzSF6E0.png",
-  "v41wgD5yj4maHRS1FxGOvmxpdc.png",
+  productScreenshots.booking,
+  productScreenshots.activities,
+  productScreenshots.pos,
+  productScreenshots.kitchen,
 ];
 const accuracyFrames = [
-  "yT2ei2orOQ46TTHQue2bufkBZ8.png",
-  "7DCOIE36cTcsKJbtuEqTawgXZy8.png",
-  "FwFraRQuHWqTShM7v3IiqVjsuA.png",
-  "W0E59M5zOjZeHo2vy2ky0uFlwM.png",
+  productScreenshots.activities,
+  productScreenshots.crew,
+  productScreenshots.assets,
+  productScreenshots.calendar,
 ];
 const budgetFrames = [
-  "K7WhhjhYTPAnpt65TmWWYg6XHk.png",
-  "gBcrOqPULQjPYRWVvmT9rJycuk.png",
-  "iDGIoLq3cdnKCDDO6RTf8x1TGw.png",
+  productScreenshots.activities,
+  productScreenshots.crew,
+  productScreenshots.assets,
 ];
 const integrationMarks = [
-  "i4kzQ1DLpTutyq95f0eXB5jHKZ4.svg",
-  "ArRIDmNKPBanN33bRUDRFgIXs.svg",
-  "Xm8JFTAIcwYtTVxm1sv4Z3JZU.svg",
-  "WzElv7JCSKjpHDmEi3UW1dgOsE.svg",
-  "E83G1yMci4KGqrObe9kF6FHJkVM.svg",
-  "2YbXAi0UsNmrDnjUUy0h9a0QM.svg",
-  "xAxt4Qmz1LKnOXUaH1pgUQJBY8.svg",
-  "pEeYERluVPpdzuovGexeI5W7NI.svg",
+  { name: "Bookings", mark: "B" },
+  { name: "Rooms", mark: "R" },
+  { name: "Guides", mark: "G" },
+  { name: "Gear", mark: "A" },
+  { name: "Kitchen", mark: "K" },
+  { name: "Sales", mark: "S" },
+  { name: "Reports", mark: "↗" },
+  { name: "Team", mark: "T" },
 ];
 
 const frameDelays: Record<Props["scene"], string> = {
@@ -50,6 +50,19 @@ const frameDelays: Record<Props["scene"], string> = {
   analytics: "800,800,500",
   budget: "500,500,1000,500,500,500",
   integrations: "500,500",
+};
+
+// Keep the source scene IDs for motion timing, but describe the current product
+// subject to people who focus an animated preview.
+const sceneDescriptions: Record<Props["scene"], string> = {
+  simple: "Daily operations preview for a sample lodge",
+  accuracy: "Guide and equipment scheduling preview for a sample lodge",
+  security: "Staff roles and access preview for a sample lodge",
+  overview: "Places, Crew and Assets calendar preview for a sample lodge",
+  billing: "Booking, point of sale and kitchen preview for a sample lodge",
+  analytics: "Arrivals and daily work preview for a sample lodge",
+  budget: "Activity, guide and equipment planning preview for a sample lodge",
+  integrations: "Connected booking, kitchen and reporting preview for a sample lodge",
 };
 ---
 
@@ -63,80 +76,80 @@ const frameDelays: Record<Props["scene"], string> = {
   data-motion-step="0"
   tabindex="0"
   role="group"
-  aria-label={`${scene} interactive product preview`}
+  aria-label={sceneDescriptions[scene]}
 >
   {scene === "simple" && (
-    <img class="scene-dashboard scene-dashboard-main" src={image("QSkLnJSuSnRK9rXOsrSn26Ejs.png")} alt="Financial dashboard" />
+    <img class="scene-dashboard scene-dashboard-main" src={productScreenshots.mobileOperations.src} alt="" aria-hidden="true" />
   )}
 
   {scene === "accuracy" && (
-    <div class="accuracy-stage">
+    <div class="accuracy-stage" aria-hidden="true">
       <div class="accuracy-track">
-        {accuracyFrames.map((asset) => <img src={image(asset)} alt="Live financial dashboard view" />)}
+        {accuracyFrames.map((screen) => <img src={screen.src} alt={screen.alt} />)}
       </div>
     </div>
   )}
 
   {scene === "security" && (
-    <div class="security-stage">
-      <img class="security-grid" src={image("2nvq2TTSwMyjS9FpY4vxdCHgdFI.svg")} alt="" />
-      <img class="security-settings" src={image("gDxgpiL0dGDMCJi0fQczI51Ons.svg")} alt="Account security settings" />
+    <div class="security-stage" aria-hidden="true">
+      <div class="security-grid" aria-hidden="true"></div>
+      <div class="security-settings"><span class="security-settings-kicker">Team access</span><h4>Give each role a clear view</h4><div><span>Reception</span><b>Bookings · Guests</b></div><div><span>Guides</span><b>Activities · Crew</b></div><div><span>Kitchen</span><b>Orders · Dietary notes</b></div><small>Sample workspace roles</small></div>
       <div class="security-rail" aria-hidden="true">
-        <img class="security-person" src={image("VKW7AWRna4bKkm72oWIthi8UmI0.jpg")} alt="" />
+        <span class="security-person">M</span>
         <span class="security-lock">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10V7.5a4.5 4.5 0 0 1 8.55-1.95M6 10h12v10H6zM12 14v2.5" /></svg>
         </span>
-        <img class="security-user-badge" src={image("TP96gL3ExzrkOX9XZILD0UulNHs.svg")} alt="" />
+        <img class="security-user-badge" src="/favicon.svg" alt="" />
       </div>
       <div class="security-login" aria-hidden="true">
         <div class="security-login-head">
-          <img src={image("TP96gL3ExzrkOX9XZILD0UulNHs.svg")} alt="" />
-          <div><b>Login to your account</b><span>Enter your details to login.</span></div>
+          <img src="/favicon.svg" alt="" />
+          <div><b>Sign in to the staff workspace</b><span>Your role determines the tools you see.</span></div>
         </div>
         <i class="security-divider"></i>
         <div class="security-fields">
-          <label>Email Address* <span class="security-input security-email"><i>✉</i><em>your@email.com</em></span></label>
+          <label>Email Address* <span class="security-input security-email"><i>✉</i><em>staff@example.com</em></span></label>
           <label>Password* <span class="security-input security-password"><i>♙</i><em>••••••••••</em></span></label>
         </div>
-        <div class="security-action"><span><i>✓</i> Keep me logged in</span><u>Forgot password?</u></div>
-        <button class="security-submit" type="button" tabindex="-1">Login</button>
+        <div class="security-action"><span><i>✓</i> Two-factor sign-in</span><u>Activity log</u></div>
+        <button class="security-submit" type="button" tabindex="-1">Continue</button>
       </div>
     </div>
   )}
 
   {scene === "overview" && (
-    <div class="overview-stage">
-      {overviewFrames.map((asset, index) => <img src={image(asset)} alt="" data-motion-frame={index} />)}
+    <div class="overview-stage" aria-hidden="true">
+        {overviewFrames.map((screen, index) => <img src={screen.src} alt={screen.alt} data-motion-frame={index} />)}
     </div>
   )}
 
   {scene === "billing" && (
-    <div class="billing-stage">
+    <div class="billing-stage" aria-hidden="true">
       <div class="billing-list">
-        {billingFrames.slice(1).map((asset, index) => <img src={image(asset)} alt="" data-motion-frame={index} />)}
+          {billingFrames.slice(1).map((screen, index) => <img src={screen.src} alt={screen.alt} data-motion-frame={index} />)}
       </div>
-      <img class="billing-my-cards" src={image(billingFrames[0])} alt="My cards and recent transactions" />
+      <img class="billing-my-cards" src={billingFrames[0].src} alt={billingFrames[0].alt} />
     </div>
   )}
 
   {scene === "analytics" && (
-    <div class="analytics-stage">
+    <div class="analytics-stage" aria-hidden="true">
       <div class="analytics-stack">
         <div class="analytics-score-card">
           <div class="analytics-card-head">
             <span class="analytics-head-title">
               <svg viewBox="0 0 18 15" aria-hidden="true"><path d="M1 12.5a8 8 0 1 1 16 0M9 10l3.8-4" /><circle cx="9" cy="10" r="1" /></svg>
-              Credit Score
+              Arrivals today
             </span>
             <span class="analytics-head-button">Details</span>
           </div>
           <i class="analytics-divider"></i>
           <div class="analytics-score-details">
             <div>
-              <span>Your credit score is <b><i class="score-zero">0</i><i class="score-value">710</i></b></span>
-              <small>This score is considered to be Excellent.</small>
+              <span>In this sample lodge <b><i class="score-zero">0</i><i class="score-value">2</i></b></span>
+              <small>See arrivals alongside today’s tasks.</small>
             </div>
-            <span class="analytics-score-icon" aria-hidden="true">😎</span>
+            <span class="analytics-score-icon" aria-hidden="true">↗</span>
           </div>
           <div class="score-bars">{Array.from({ length: 36 }).map((_, index) => <i class:list={{ muted: index >= 26 }}></i>)}</div>
         </div>
@@ -144,40 +157,40 @@ const frameDelays: Record<Props["scene"], string> = {
           <div class="analytics-card-head">
             <span class="analytics-head-title">
               <svg viewBox="0 0 17 15" aria-hidden="true"><path d="M1 1h15v13H1zM4 10V7m4 3V4m4 6V6" /></svg>
-              Major Expenses
+              Today’s work
             </span>
             <span class="analytics-head-button analytics-weekly">Weekly <svg viewBox="0 0 8 5" aria-hidden="true"><path d="m1 1 3 3 3-3" /></svg></span>
           </div>
           <i class="analytics-divider"></i>
           <div class="analytics-chart">
-            <div class="analytics-y-axis"><span>Housing</span><span>Utilities</span><span>Food</span></div>
+            <div class="analytics-y-axis"><span>Rooms</span><span>Guides</span><span>Kitchen</span></div>
             <div class="analytics-plot">
               <div class="analytics-grid" aria-hidden="true">{Array.from({ length: 6 }).map(() => <i></i>)}</div>
               <div class="analytics-bars" aria-hidden="true"><i></i><i></i><i></i></div>
-              <div class="analytics-x-axis"><span>0</span><span>2K</span><span>4K</span><span>6K</span><span>8K</span><span>10K</span></div>
+              <div class="analytics-x-axis"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span></div>
             </div>
           </div>
         </div>
-        <img class="analytics-balance-card" src={image("d93U5p8ltofl5PSJQkUSS4eBQCo.png")} alt="Total balance overview" />
+        <img class="analytics-balance-card" src={productScreenshots.operations.src} alt={productScreenshots.operations.alt} />
       </div>
     </div>
   )}
 
   {scene === "budget" && (
-    <div class="budget-stage">
-      {budgetFrames.map((asset, index) => <img src={image(asset)} alt="" data-motion-frame={index} />)}
+    <div class="budget-stage" aria-hidden="true">
+      {budgetFrames.map((screen, index) => <img src={screen.src} alt={screen.alt} data-motion-frame={index} />)}
     </div>
   )}
 
   {scene === "integrations" && (
-    <div class="integration-stage">
+    <div class="integration-stage" aria-hidden="true">
       <div class="integration-group">
-        <div class="integration-center"><img src={image("fnfmuCs2peEKsqmyIDNjoIjUCvQ.svg")} alt="Artho" /></div>
+        <div class="integration-center"><img src="/favicon.svg" alt="Malvavisco" /></div>
         <svg class="integration-swap" viewBox="0 0 32 32" aria-hidden="true">
           <path d="M7 11h18m-4-4 4 4-4 4M25 21H7m4 4-4-4 4-4" />
         </svg>
         <div class="integration-orbit">
-          {integrationMarks.map((asset) => <span><img src={image(asset)} alt="" /></span>)}
+          {integrationMarks.map((module) => <span aria-label={module.name} title={module.name}>{module.mark}</span>)}
         </div>
       </div>
     </div>
