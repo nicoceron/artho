@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "reason": "The source CDN returned AVIF bytes behind PNG URLs. Local PNG re-encodes keep the URL extension and static MIME type aligned while preserving every decoded RGBA pixel.",
+  "images": [
+    {
+      "localPath": "assets/framerusercontent.com/images/7DCOIE36cTcsKJbtuEqTawgXZy8.png",
+      "sourceSha256": "52e7e3962e61c5443e86e3521c4f5787eab82a7b7158fc8c5e2b09cfa2ab618a",
+      "localSha256": "cbf0ca1c778e0db6bb4822d744a32ada8471a653be9e1daf7a06a5b74a58337d"
+    },
+    {
+      "localPath": "assets/framerusercontent.com/images/ghc2cEELBUpeN3m8emhYgieZk.png",
+      "sourceSha256": "6529270986c05b81103d8efb08925da061b80d5e045ebc5d68daafecad08d7d1",
+      "localSha256": "5b2f26d1f352d84d834f11088fb99b85d98ff6710845ff24e5b3028c9677f93a"
+    },
+    {
+      "localPath": "assets/framerusercontent.com/images/v41wgD5yj4maHRS1FxGOvmxpdc.png",
+      "sourceSha256": "9b62cae7d8805bdd0516afbd9bf3d1a87ca1d281ae34558a01655d06430e9675",
+      "localSha256": "b0d9a7b3104b88df2fdd22f7e98a22bc59b91662d54751e69a7e9c26f00fda70"
+    },
+    {
+      "localPath": "assets/framerusercontent.com/images/W0E59M5zOjZeHo2vy2ky0uFlwM.png",
+      "sourceSha256": "0105e913038f50c0d0f732308a464de7d74a3379e75adb406bead51224f219a7",
+      "localSha256": "7b91a5cd58930942bd2a18c0604930775c62d3261581fedb1ad6faa077e41f80"
+    },
+    {
+      "localPath": "assets/framerusercontent.com/images/yT2ei2orOQ46TTHQue2bufkBZ8.png",
+      "sourceSha256": "fe6d26f60d2cd0d89edcc0fbaa86bdb0250a8c50752da8fea26f00266db0e796",
+      "localSha256": "d792125c698f4fd9e22c2e34478ac53ddde9defbe291080497377ff257ee92b7"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+---
+import { responsiveImage } from "../data/responsive-images";
+
+interface Props {
+  article: {
+    slug: string;
+    title: string;
+    category: string;
+    date: string;
+    image: string;
+    excerpt: string;
+  };
+}
+
+const { article } = Astro.props;
+---
+
+<article class="blog-card" data-blog-card>
+  <a class="blog-card-image" href={`/blog/${article.slug}`} tabindex="-1" aria-label={`Read ${article.title}`}>
+    <img {...responsiveImage(article.image)} sizes="(min-width: 1200px) 380px, (min-width: 810px) calc((100vw - 90px) / 2), calc(100vw - 40px)" alt="" />
+  </a>
+  <div class="blog-card-details"><div class="blog-card-meta"><span>{article.category}</span><time>{article.date}</time></div>
+  <h2><a href={`/blog/${article.slug}`}>{article.title}</a></h2>
+  <p>{article.excerpt}</p>
+  </div>
+</article>

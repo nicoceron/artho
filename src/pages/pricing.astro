@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LogoRail from "../components/LogoRail.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import Testimonials from "../components/Testimonials.astro";
+import UiIcon from '../components/UiIcon.astro';
+import { pricingFaqs } from "../data/site";
+
+const plans = [
+  { name: "Starter Plan", monthly: "$0", yearly: "$0", description: "Perfect for freelancers or solo founders", cta: "Start for Free", tone: "gray", features: ["Real-time financial dashboard", "Unlimited invoicing", "Smart transaction categorization", "1 bank account integration", "Email support"] },
+  { name: "Growth Plan", monthly: "$29", yearly: "$290", description: "Built for growing teams that need more control", cta: "Start 7-Day Free Trial", tone: "mint", features: ["Everything in Starter", "Automated billing & payment reminders", "Smart reports & visual analytics", "Multi-account & currency support", "Priority chat support"] },
+  { name: "Business Plan", monthly: "$79", yearly: "$790", description: "For scaling teams and advanced financial operations", cta: "Book a Demo", tone: "blue", features: ["Everything in Growth", "Advanced budgeting & forecasting tools", "Custom roles & access control", "Premium integrations (e.g. ERP, payroll)", "Dedicated onboarding & account manager"] },
+] as const;
+
+const addOns = [
+  ["Advanced Analytics", "Deeper insights, trend forecasting, and exportable custom reports for teams that thrive on data.", "$15", "per month", "analytics"],
+  ["Multi-Currency Support", "Manage transactions, invoices, and reporting in 160+ currencies with real-time FX conversions.", "$10", "per month", "currency"],
+  ["Enhanced Security & Compliance", "Includes SSO, audit logs, and enterprise-grade encryption for finance teams with regulatory needs.", "$20", "per month", "shield"],
+  ["Additional Team Members", "Scale your access as your team grows—add unlimited collaborators, with role-based permissions.", "$5", "per month per seat", "team"],
+  ["Premium Integrations Pack", "Access integrations with ERPs, payroll systems, and advanced CRMs not included in core plans.", "$25", "per month", "integrations"],
+] as const;
+---
+
+<BaseLayout>
+  <section class="pricing-hero section-pad">
+    <div class="shell">
+      <p class="breadcrumb centered"><a href="/">Home</a><span>/</span>Pricing</p>
+      <SectionHeader level="h1" title="Simple, Transparent Pricing for Every Stage" description="Whether you're just getting started or scaling fast, we’ve got a plan that fits your workflow and budget. No hidden fees, no surprises." />
+      <div class="billing-toggle" role="group" aria-label="Billing period"><button class="active" type="button" data-billing-toggle="monthly" aria-pressed="true">Monthly</button><button type="button" data-billing-toggle="yearly" aria-pressed="false">Yearly</button></div>
+      <div class="pricing-grid">
+        {plans.map((plan) => (
+          <article class:list={["pricing-card", plan.tone]} data-price-card>
+            <h3>{plan.name}</h3>
+            <div class="price"><strong data-monthly-price={plan.monthly} data-yearly-price={plan.yearly}>{plan.monthly}</strong><span data-billing-period>/month</span></div>
+            <p>{plan.description}</p>
+            <h4>What’s Included:</h4>
+            <ul>{plan.features.map((feature) => <li><span>✓</span>{feature}</li>)}</ul>
+            <a class="button button-dark" href="/contact">{plan.cta}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <LogoRail />
+  <section class="addons-section section-pad">
+    <div class="shell">
+      <SectionHeader eyebrow="Add-Ons" title="Customize Your Plan with Powerful Add-Ons" description="Enhance your workflow with optional features that scale with your business. Add only what you need—when you need it." />
+      <div class="addon-list">
+        {addOns.map(([title, description, price, period, icon]) => (
+          <article class="addon-card"><div class="addon-intro"><span class="addon-icon"><UiIcon name={icon} size={20} /></span><div><h3>{title}</h3><p>{description}</p></div></div><div class="addon-price"><strong>{price}</strong><span>{period}</span></div><a class="button button-outline compact" href="/contact">Get Add-on</a></article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="pricing-faq section-pad">
+    <div class="shell faq-shell">
+      <SectionHeader eyebrow="Frequently Asked Questions" title="Still Have Questions? We’ve Got Answers." />
+      <FaqAccordion items={pricingFaqs} />
+    </div>
+  </section>
+  <Testimonials />
+</BaseLayout>

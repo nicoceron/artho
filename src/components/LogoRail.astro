@@ -1,0 +1,14 @@
+---
+import { logoMarks } from "../data/site";
+---
+
+<section class="logo-rail" aria-label="Trusted companies">
+  <div class="logo-rail-inner">
+    <p>Trusted by clients across the world</p>
+    <div class="logo-marquee" aria-hidden="true">
+      <div class="logo-track">
+        {Array.from({ length: 4 }, () => logoMarks).flat().map((src) => <img src={src} alt="" />)}
+      </div>
+    </div>
+  </div>
+</section>

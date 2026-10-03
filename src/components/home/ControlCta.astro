@@ -1,0 +1,111 @@
+---
+import Badge from '../Badge.astro';
+import UiIcon from '../UiIcon.astro';
+import Button from "../Button.astro";
+import { image } from "../../data/site";
+
+const transferContacts = [
+  { name: "Natalia", avatar: image("0YMO4DCSjsUdwT3ZVFrNq1MGgAE.png") },
+  { name: "James", avatar: image("BIFZ35M267ODYvDNB0ELkZ7Bc.png") },
+  { name: "Laura", avatar: image("u6M9rR6EzYdCNQXh4tvk5XzRKU.png") },
+  { name: "Wei", avatar: image("LJZFqFiRdvPgaEJll85Xg0e33Y.png") },
+];
+
+const transferTrack = Array.from({ length: 3 }, () => transferContacts).flat();
+
+const notifications = [
+  {
+    avatar: image("H4yWM8rPyG8cL7pyQFeSwUDWCM.jpg"),
+    message: "Wei Chen joined to Final Presentation",
+    time: "8 min ago",
+    company: "Lamoon Inc.",
+  },
+  {
+    avatar: image("nH8UngonHGpnGKkd9wKaWu20qk8.jpg"),
+    message: "Sophia Williams invites you arthitecture.design file with you",
+    time: "2 hours ago",
+    company: "Compose Digi",
+    actions: true,
+  },
+  {
+    avatar: image("DxZcVuSqP6CUtNP0xHCsgSd8SQ.jpg"),
+    message: "Arthur Taylor uploaded an arthur.csv file",
+    time: "3 hour ago",
+    company: "Tello Godog",
+    attachment: "arthur.csv(4mb)",
+  },
+  {
+    avatar: image("lBwB6NeZbpf4LNLHti61KRzoU.png"),
+    message: "Laura Perez commented on your post",
+    time: "2 days ago",
+    company: "Gombal Mukio",
+    attachment: "Fantastic! Let's dive right in 🚀",
+  },
+] as const;
+---
+
+<section class="control-section section-pad">
+  <div class="control-panel shell" data-control-scene>
+    <div class="control-copy">
+      <Badge label="Get Started Today" />
+      <h2>Take Control of Your Finances Now</h2>
+      <p>Start your free trial and experience seamless financial management with powerful, easy-to-use tools—no credit card required.</p>
+      <div class="control-points">
+        <div><h3>Fast Setup</h3><p>Get started in minutes with simple onboarding and easy account connections—no technical skills needed.</p></div>
+        <div><h3>Full Feature Access</h3><p>Enjoy full access to all premium features during your free trial—nothing is locked or limited.</p></div>
+      </div>
+      <Button href="/pricing">Upgrade Premium <span class="button-arrow">→</span></Button>
+      <div class="micro-benefits"><span><i><UiIcon name="check" size={12} /></i>Flexible solution</span><span><i><UiIcon name="check" size={12} /></i>Constant updates</span></div>
+    </div>
+    <div class="control-visual">
+      <div class="mobile-shell" data-live-balance data-control-visual data-control-visible="false" data-notification-open="false">
+        <div class="mobile-head">
+          <div class="mobile-user"><img src={image("VKW7AWRna4bKkm72oWIthi8UmI0.jpg")} alt="Marai Neesu" /><span data-control-name>Welcome back 👋🏻<b>Marai Neesu</b></span></div>
+          <button class="notification-button" type="button" aria-label="Open notifications" aria-expanded="false" aria-controls="control-notifications" data-control-notification-toggle>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" /></svg><i></i>
+          </button>
+        </div>
+        <div class="balance-details">
+          <p>Your balance is</p>
+          <strong data-count-value="16058.94" data-count-prefix="$">$0</strong>
+          <div class="balance-date"><span>Today</span><time datetime="2026-08-29">Aug 29, 2026</time></div>
+        </div>
+        <div class="quick-transfer">
+          <div class="quick-transfer-head">
+            <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h14M4 7l3-3M4 7l3 3M20 17H6m14 0-3-3m3 3-3 3" /></svg><b>Quick Transfer</b></div>
+            <span class="transfer-settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" /><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21h-4v-.1A1.7 1.7 0 0 0 8 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 3.6 15a1.7 1.7 0 0 0-1.6-1H2v-4h.1A1.7 1.7 0 0 0 3.6 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 8 3.6 1.7 1.7 0 0 0 9 2h4a1.7 1.7 0 0 0 2 1.6 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 8a1.7 1.7 0 0 0 1.6 1h.1v4H21a1.7 1.7 0 0 0-1.6 2Z" /></svg><span>Advanced</span></span>
+          </div>
+          <div class="transfer-divider"></div>
+          <div class="transfer-contacts-head"><p>MY CONTACTS (12)</p><div aria-hidden="true"><span>‹</span><span>›</span></div></div>
+          <div class="transfer-viewport">
+            <ul class="transfer-track" aria-label="Transfer contacts">
+              {transferTrack.map((contact, index) => <li aria-hidden={index >= transferContacts.length ? "true" : undefined}><img src={contact.avatar} alt="" /><span>{contact.name}</span></li>)}
+            </ul>
+          </div>
+        </div>
+        <section class="control-notifications" id="control-notifications" aria-label="Notifications" aria-hidden="true" data-control-notifications>
+          <div class="control-notifications-head"><strong>Notifications</strong><button type="button">Mark all as read</button></div>
+          <div class="control-notification-tabs" role="tablist" aria-label="Notification filters">
+            <button type="button" class="active" role="tab" aria-selected="true">All</button>
+            <button type="button" role="tab" aria-selected="false">Inbox <span>2</span></button>
+            <button type="button" role="tab" aria-selected="false">Following</button>
+            <button type="button" role="tab" aria-selected="false">Arhived</button>
+          </div>
+          <div class="control-notification-list">
+            {notifications.map((notification) => (
+              <article class="control-notification-item">
+                <img src={notification.avatar} alt="" />
+                <div>
+                  <p>{notification.message}</p>
+                  <small>{notification.time}<i></i>{notification.company}</small>
+                  {"attachment" in notification && <span class="control-notification-attachment">{notification.attachment}</span>}
+                  {"actions" in notification && <span class="control-notification-actions"><button type="button">Deny</button><button type="button">Approve</button></span>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

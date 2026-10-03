@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import articles from "../../data/articles.json";
+---
+
+<BaseLayout>
+  <PageHero pageClass="blog-hero" compact breadcrumb="Blog" title="Insights, Tips & Tools for Smarter Financial Management" description="Explore expert articles, product updates, and actionable guides to help you grow, save time, and stay in control of your finances." />
+  <section class="blog-index section-pad"><div class="shell blog-grid">{articles.map((article) => <BlogCard article={article} />)}</div></section>
+</BaseLayout>

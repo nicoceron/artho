@@ -1,0 +1,29 @@
+---
+import SectionHeader from "../SectionHeader.astro";
+import FeatureCard from './FeatureCard.astro';
+
+const features = [
+  ["Real-Time Financial Overview", "Get instant insights into your cash flow, expenses, and income—all updated live for smarter decisions.", "overview"],
+  ["Automated Billing & Payments", "Streamline invoicing with automation that sends reminders and tracks payments so you get paid faster.", "billing"],
+  ["Insightful Analytics", "Visualize your financial health with clear reports that highlight trends and opportunities to grow.", "analytics"],
+  ["Budget Planning", "Set custom budgets and get alerts to avoid overspending and keep your finances on track.", "budget"],
+  ["Seamless Integrations", "Connect smoothly with your favorite accounting, CRM, and payment apps for effortless workflow.", "integrations"],
+] as const;
+---
+
+<section class="feature-grid-section section-pad">
+  <div class="shell">
+    <div class="feature-grid">
+      <div class="feature-top">
+        <div class="feature-overview">
+          <SectionHeader align="left" eyebrow="Key Features" title="Powerful Features to Streamline Your Finances" description="Designed to simplify complex financial tasks, save you time, and give you full control with smart, easy-to-use tools." />
+          <FeatureCard index={1} title={features[0][0]} description={features[0][1]} scene={features[0][2]} />
+        </div>
+        <FeatureCard index={2} title={features[1][0]} description={features[1][1]} scene={features[1][2]} />
+      </div>
+      <div class="feature-bottom">
+        {features.slice(2).map(([title, description, scene], index) => <FeatureCard index={index + 3} title={title} description={description} scene={scene} />)}
+      </div>
+    </div>
+  </div>
+</section>

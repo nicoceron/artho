@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="contact-section section-pad">
+    <div class="shell contact-layout">
+      <div class="contact-copy">
+        <p class="breadcrumb"><a href="/">Home</a><span>/</span>Contact</p>
+        <h1>Let’s Talk Finance — We’re Here to Help</h1>
+        <p class="contact-lead">Have a question, need support, or want a demo? Reach out and our team will get back to you within 24 hours. We’d love to hear from you.</p>
+        <div class="contact-methods">
+          <article><h2>Email Us</h2><a class="button button-dark compact" href="mailto:support@artho.com">support@artho.com</a><p>For any inquiries or assistance, feel free to email us. We aim to respond within 24 hours.</p></article>
+          <article><h2>Call Us</h2><a class="button button-dark compact" href="tel:18001234567">1-800-123-4567</a><p>Our customer support team is available Monday to Friday, 9 AM to 6 PM (EST).</p></article>
+          <article><h2>Visit Our Help Center</h2><a class="button button-dark compact" href="/faq">Artho Help Center</a><p>Find answers to common questions, tutorials, and guides.</p></article>
+        </div>
+      </div>
+
+      <form class="contact-form" action="#" method="post">
+        <h2>Send Us a Message</h2>
+        <label>Name*<input type="text" name="name" placeholder="Jane Smith" required /></label><label>Email*<input type="email" name="email" placeholder="jane@framer.com" required /></label>
+        <label>Phone Number<input type="tel" name="phone" placeholder="(+00)000000" /></label>
+        <label>Subject*<input type="text" name="subject" placeholder="Request Demo Account" required /></label>
+        <label>Message*<textarea name="message" rows="7" placeholder="Message" required></textarea></label>
+        <button class="button button-dark" type="submit">Submit</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>(".contact-form");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const status = form.querySelector<HTMLElement>(".form-status");
+    if (status) status.textContent = "Demo form only — no message was sent.";
+  });
+</script>

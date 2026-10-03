@@ -1,0 +1,17 @@
+---
+interface Props {
+  items: readonly (readonly [string, string])[];
+  firstOpen?: boolean;
+}
+
+const { items, firstOpen = true } = Astro.props;
+---
+
+<div class="faq-list" data-accordion-group>
+  {items.map(([question, answer], index) => (
+    <details data-accordion open={firstOpen && index === 0}>
+      <summary><span>{question}</span><b aria-hidden="true">⌄</b></summary>
+      <div class="faq-answer"><p>{answer}</p></div>
+    </details>
+  ))}
+</div>

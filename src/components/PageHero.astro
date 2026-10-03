@@ -1,0 +1,41 @@
+---
+import Button from "./Button.astro";
+import CheckList from "./CheckList.astro";
+import { checkBenefits } from "../data/site";
+
+interface Props {
+  breadcrumb: string;
+  title: string;
+  description: string;
+  images?: readonly string[];
+  compact?: boolean;
+  pageClass?: string;
+  reveal?: boolean;
+}
+
+const { breadcrumb, title, description, images = [], compact = false, pageClass, reveal = false } = Astro.props;
+---
+
+<section class:list={["page-hero", pageClass, { compact, "with-images": images.length }]}>
+  <div class="shell page-hero-inner">
+    <div class="page-hero-copy" data-reveal={reveal ? "" : undefined}>
+      <p class="breadcrumb"><a href="/">Home</a><span>/</span>{breadcrumb}</p>
+      <h1>{title}</h1>
+      <p class="page-hero-description">{description}</p>
+      {!compact && (
+        <>
+          <div class="button-row">
+            <Button href="/pricing">Start Free Trial <span class="button-arrow">→</span></Button>
+            <Button href="/contact" variant="outline">Book a Demo</Button>
+          </div>
+          <CheckList items={checkBenefits} compact />
+        </>
+      )}
+    </div>
+    {images.length > 0 && (
+      <div class="page-hero-collage" data-reveal={reveal ? "" : undefined}>
+        {images.map((src) => <img src={src} alt="Artho team collaborating" />)}
+      </div>
+    )}
+  </div>
+</section>

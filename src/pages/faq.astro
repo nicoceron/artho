@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { faqGroups } from "../data/site";
+import faqAnswers from '../data/faq-answers.json';
+
+const sectionIds = [
+  "getting-started",
+  "billing-subscriptions",
+  "features-tools",
+  "integrations",
+  "security-privacy",
+] as const;
+---
+
+<BaseLayout>
+  <PageHero pageClass="faq-hero" compact breadcrumb="FAQ" title="Need Help? We've Got You Covered." description="Browse our knowledge base, get step-by-step guides, or contact support. Whether you're just getting started or troubleshooting, we’re here to help." />
+  <section class="knowledge-section section-pad">
+    <div class="shell knowledge-layout" data-scroll-sections>
+      <nav class="knowledge-nav" aria-label="FAQ categories">
+        {faqGroups.map((group, index) => (
+          <a href={`#${sectionIds[index]}`} data-scroll-link>{group.title}</a>
+        ))}
+      </nav>
+      <div class="knowledge-panels">
+        {faqGroups.map((group, index) => (
+          <section id={sectionIds[index]} class="knowledge-group" data-scroll-section>
+            <h2>{group.title}</h2>
+            <p>{group.description}</p>
+            <div class="knowledge-questions" data-accordion-group>
+              {group.questions.map((question) => (
+                <details data-accordion><summary><span>{question}</span><b aria-hidden="true">⌄</b></summary><div><p>{faqAnswers[question]}</p></div></details>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

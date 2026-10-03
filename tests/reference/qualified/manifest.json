@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "qualificationGeneratedAt": "2026-10-03T07:10:38.318Z",
+  "acceptance": "reviewed clean source captures; originals preserved",
+  "pixelmatch": {
+    "threshold": 0.12,
+    "includeAA": false,
+    "acceptanceRatio": 0.01
+  },
+  "cases": [
+    {
+      "key": "/::bp-500-above::full-page",
+      "path": "tests/reference/qualified/home--bp-500-above--full-page.png",
+      "cleanSha256": "c9b367ed5bfeb60e6830b2c64a8089a7226122f8c7a3971f77720b7819342142",
+      "archivedSha256": "76fa5f9ea819636db24fcf08b795c06aa97ed77c000d4140007f194a607dd7e0",
+      "sourceHtmlSha256": "15ce4ac345b8a270ed779fa05a3668f97d8b411a0be6b7556b31077984a452a1",
+      "nativeSha256": "b97e6b92ec0c539bd478ee3bd10e49d174fe840565798195e24509068b51a4f4",
+      "originalVsClean": 0.18597438012324866,
+      "nativeVsClean": 0.008487878611708622,
+      "motionSetting": "no-preference",
+      "sourceMotionSetting": "no-preference",
+      "nativeMotionSetting": "no-preference",
+      "workflowVariant": null,
+      "workflowCaptureMode": null,
+      "signupPreviewStage": "transition-or-other",
+      "workflowStateNaturallyReached": null,
+      "expectedSourceImageCount": null,
+      "nativeScrollWarmupPositions": null,
+      "nativeVisibleRevealCount": 9,
+      "nativeRevealedCount": 9,
+      "nativeControlBalance": "$16,058.94",
+      "sourceSelectedWindowFrameIndices": null,
+      "nativeSelectedWindowFrameIndices": null,
+      "sourcePairRatios": null,
+      "nativePairRatios": null,
+      "sourceAllAttemptedPairRatios": null,
+      "nativeAllAttemptedPairRatios": null,
+      "sourceFrameTimesSinceNavigationMs": null,
+      "nativeFrameTimesSinceNavigationMs": null
+    },
+    {
+      "key": "/::bp-1199-above::full-page",
+      "path": "tests/reference/qualified/home--bp-1199-above--full-page.png",
+      "cleanSha256": "7c784b3fc805d80ce19fe8226040ef1a7256b189347759d5384a01046c35648c",
+      "archivedSha256": "011775ba73da4447072b8fdb392edf09e10165a26ecd2623b4eed4d0c48a4562",
+      "sourceHtmlSha256": "15ce4ac345b8a270ed779fa05a3668f97d8b411a0be6b7556b31077984a452a1",
+      "nativeSha256": "c9b2f8cacd6a0145393e13dd0ddf33fe2b981c322b165d7eae4ba6b42990af14",
+      "originalVsClean": 0.15458955967324167,
+      "nativeVsClean": 0.0073422992628013545,
+      "motionSetting": "no-preference",
+      "sourceMotionSetting": "no-preference",
+      "nativeMotionSetting": "no-preference",
+      "workflowVariant": "Desktop/01",
+      "workflowCaptureMode": "cached-eager-images-natural-Step01-bottom-stable-window-100ms",
+      "signupPreviewStage": "bottom",
+      "workflowStateNaturallyReached": true,
+      "expectedSourceImageCount": 86,
+      "nativeScrollWarmupPositions": [
+        4871,
+        5789,
+        5991,
+        6164,
+        6572
+      ],
+      "nativeVisibleRevealCount": 9,
+      "nativeRevealedCount": 9,
+      "nativeControlBalance": "$0",
+      "sourceSelectedWindowFrameIndices": [
+        1,
+        2,
+        3
+      ],
+      "nativeSelectedWindowFrameIndices": [
+        1,
+        2,
+        3
+      ],
+      "sourcePairRatios": [
+        0,
+        0.00001524208009563658
+      ],
+      "nativePairRatios": [
+        0,
+        0
+      ],
+      "sourceAllAttemptedPairRatios": [
+        0,
+        0.00001524208009563658
+      ],
+      "nativeAllAttemptedPairRatios": [
+        0,
+        0
+      ],
+      "sourceFrameTimesSinceNavigationMs": [
+        4036,
+        4506,
+        5246
+      ],
+      "nativeFrameTimesSinceNavigationMs": [
+        3872,
+        4299,
+        4982
+      ]
+    },
+    {
+      "key": "/blog::desktop::scroll-025",
+      "path": "tests/reference/qualified/blog--desktop--scroll-025.png",
+      "cleanSha256": "0c0a65b89ae309802d848e8ac9ae0468aeff37e4c7b7c4229e286b1e3b126fda",
+      "archivedSha256": "b54625f05dc4825a3e980d607966c2b2f5c68ae03144491929e2b7190c3da1aa",
+      "sourceHtmlSha256": "eb7b71c463c79bfc430616a5088c56e260d14810400bfd7763b3e31a505b604d",
+      "nativeSha256": "bfb77017c1c92d797b2cbc4ef4998c19ec7feca5607af0288b4edcebcc01f817",
+      "originalVsClean": 0.028131944444444446,
+      "nativeVsClean": 0.0030501543209876542,
+      "motionSetting": "no-preference",
+      "sourceMotionSetting": "no-preference",
+      "nativeMotionSetting": "no-preference",
+      "workflowVariant": null,
+      "workflowCaptureMode": null,
+      "signupPreviewStage": "transition-or-other",
+      "workflowStateNaturallyReached": null,
+      "expectedSourceImageCount": null,
+      "nativeScrollWarmupPositions": null,
+      "nativeVisibleRevealCount": 0,
+      "nativeRevealedCount": 0,
+      "nativeControlBalance": null,
+      "sourceSelectedWindowFrameIndices": null,
+      "nativeSelectedWindowFrameIndices": null,
+      "sourcePairRatios": null,
+      "nativePairRatios": null,
+      "sourceAllAttemptedPairRatios": null,
+      "nativeAllAttemptedPairRatios": null,
+      "sourceFrameTimesSinceNavigationMs": null,
+      "nativeFrameTimesSinceNavigationMs": null
+    },
+    {
+      "key": "/features::tablet::scroll-025",
+      "path": "tests/reference/qualified/features--tablet--scroll-025.png",
+      "cleanSha256": "4353766a38437685ac970c7a2c48e53cf3dcfb50df55135830ec210f7d2b21f1",
+      "archivedSha256": "c20380451b9f38c7540dbecc5e4be41ab9b732ff47e2368ac1e1c3c9245b8970",
+      "sourceHtmlSha256": "c6b21ec9e1f97cd088f0537d7353f5651791d4f7c09d9a0c028130674913a6ab",
+      "nativeSha256": "23dedeaab77616d439de74d3381983de747790d4ed4302b22ad4e838c02b3032",
+      "originalVsClean": 0.07961819844535895,
+      "nativeVsClean": 0.0023914037494284406,
+      "motionSetting": "no-preference",
+      "sourceMotionSetting": "no-preference",
+      "nativeMotionSetting": "no-preference",
+      "workflowVariant": null,
+      "workflowCaptureMode": null,
+      "signupPreviewStage": "transition-or-other",
+      "workflowStateNaturallyReached": null,
+      "expectedSourceImageCount": null,
+      "nativeScrollWarmupPositions": null,
+      "nativeVisibleRevealCount": 2,
+      "nativeRevealedCount": 0,
+      "nativeControlBalance": null,
+      "sourceSelectedWindowFrameIndices": null,
+      "nativeSelectedWindowFrameIndices": null,
+      "sourcePairRatios": null,
+      "nativePairRatios": null,
+      "sourceAllAttemptedPairRatios": null,
+      "nativeAllAttemptedPairRatios": null,
+      "sourceFrameTimesSinceNavigationMs": null,
+      "nativeFrameTimesSinceNavigationMs": null
+    }
+  ]
+}

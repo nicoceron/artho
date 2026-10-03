@@ -1,0 +1,16 @@
+---
+interface Section { title: string; paragraphs?: string[]; items?: string[] }
+interface Props { title: string; updated: string; sections: Section[] }
+const { title, updated, sections } = Astro.props;
+---
+
+<article class="legal-page section-pad">
+  <div class="legal-shell shell">
+    <header><h1>{title}</h1><p>Last Updated : <time>{updated}</time></p></header>
+    <div class="legal-content">
+      {sections.map((section) => (
+        <section><h2>{section.title}</h2>{section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}{section.items && <ul>{section.items.map((item) => <li>{item.includes(': ') ? <><strong>{item.slice(0,item.indexOf(': ')+1)}</strong>{item.slice(item.indexOf(': ')+1)}</> : item}</li>)}</ul>}</section>
+      ))}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,7 @@
+---
+import icons from '../data/ui-icons.json';
+interface Props { name: keyof typeof icons; size?: number }
+const { name, size = 14 } = Astro.props;
+const icon = icons[name];
+---
+<svg viewBox={icon.viewBox} width={size} height={size} aria-hidden="true" fill="currentColor">{icon.paths.map(d => <path d={d} />)}</svg>

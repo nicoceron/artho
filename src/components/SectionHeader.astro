@@ -1,0 +1,19 @@
+---
+import Badge from './Badge.astro';
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  level?: "h1" | "h2";
+}
+
+const { eyebrow, title, description, align = "center", level = "h2" } = Astro.props;
+const Heading = level;
+---
+
+<div class:list={["section-heading", `align-${align}`]}>
+  {eyebrow && <Badge label={eyebrow} />}
+  <Heading>{title}</Heading>
+  {description && <p>{description}</p>}
+</div>

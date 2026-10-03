@@ -1,0 +1,13 @@
+---
+interface Props {
+  href: string;
+  variant?: "dark" | "outline" | "lime";
+  compact?: boolean;
+}
+
+const { href, variant = "dark", compact = false } = Astro.props;
+---
+
+<a class:list={["button", `button-${variant}`, { compact }]} href={href}>
+  <slot />
+</a>

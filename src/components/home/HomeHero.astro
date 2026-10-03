@@ -1,0 +1,43 @@
+---
+import Button from "../Button.astro";
+import CheckList from "../CheckList.astro";
+import { image } from "../../data/site";
+---
+
+<header class="home-hero">
+  <div class="home-hero-panel shell" data-hero data-motion-variant="Desktop" data-reveal>
+    <div class="hero-copy">
+      <a class="announcement" href="/contact"><span>New!</span> Start free trial today</a>
+      <h1>Simplify Your Finances. Empower Your Business.</h1>
+      <p>All-in-one financial software to manage, track, and grow your finances with ease—real-time insights, smart automation, and seamless integrations.</p>
+      <div class="button-row centered">
+        <Button href="/pricing">Start Free Trial <span class="button-arrow">→</span></Button>
+        <Button href="/contact" variant="outline">Book a Demo</Button>
+      </div>
+      <CheckList items={["No credit card required", "Cancel anytime", "Full access to all features"]} compact />
+    </div>
+
+    <div class="browser-mockup" data-hero-dashboard aria-label="Artho financial dashboard preview">
+      <div class="browser-window">
+        <div class="browser-bar" aria-hidden="true">
+          <div class="browser-chrome-left">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <svg viewBox="0 0 20 20"><rect x="2.5" y="3" width="15" height="14" rx="1.5"/><path d="M8 3v14"/></svg>
+            <svg class="browser-small-chevron" viewBox="0 0 12 12"><path d="m3 4 3 3 3-3"/></svg>
+            <svg viewBox="0 0 20 20"><path d="m12 5-5 5 5 5"/></svg>
+            <svg viewBox="0 0 20 20"><path d="m8 5 5 5-5 5"/></svg>
+          </div>
+          <span class="browser-address">app.artho.com/dashboard <svg viewBox="0 0 20 20"><path d="M15.5 8A6 6 0 1 0 16 11"/><path d="M16 4v4h-4"/></svg></span>
+          <div class="browser-chrome-right">
+            <svg viewBox="0 0 20 20"><path d="M10 13V3m-3 3 3-3 3 3"/><path d="M5 9v7h10V9"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 4v12M4 10h12"/></svg>
+            <svg viewBox="0 0 20 20"><rect x="5" y="3" width="11" height="11" rx="1"/><path d="M3 6v11h11"/></svg>
+          </div>
+        </div>
+        <img src={image("2FvOoIfvZoDbMsxIaWUJZHpJKw.png")} alt="Artho financial dashboard" />
+      </div>
+      <img class="hero-floating-card hero-floating-balance" src={image("xBxllK2qhbBQQc56D90nWUyWA.svg")} alt="Total balance: $14,480.24, up 5 percent" data-hero-float="left" />
+      <img class="hero-floating-card hero-floating-expense" src={image("Wa0iJs5NoZkKXbnov7KxFUi2Tc.svg")} alt="Total expenses: $6,240.28, down 2 percent" data-hero-float="right" />
+    </div>
+  </div>
+</header>

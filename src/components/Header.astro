@@ -1,0 +1,61 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const links = [
+  ["Home", "/"],
+  ["About", "/about"],
+  ["Features", "/features"],
+  ["Pricing", "/pricing"],
+] as const;
+
+const active = (href: string) =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+---
+
+<header class="site-header" data-header>
+  <nav class="site-nav shell" aria-label="Primary navigation">
+    <a class="brand" href="/" aria-label="Artho home">
+      <img src="/assets/framerusercontent.com/images/cnUspUeKxXIk7s8wnxDdKXXBB0.svg" alt="Artho" />
+    </a>
+
+    <div class="desktop-nav">
+      {links.map(([label, href]) => (
+        <a href={href} aria-current={pathname === href ? "page" : undefined} class:list={["nav-link", { active: active(href) }]}>
+          {label}
+        </a>
+      ))}
+      <div class="resource-menu">
+        <button class:list={["nav-link", { active: pathname.startsWith("/blog") || pathname === "/faq" }]} type="button" aria-expanded="false" aria-controls="resource-menu" data-resource-toggle>
+          Resources
+        </button>
+        <div class="resource-popover" id="resource-menu" data-resource-menu>
+          <a href="/blog" aria-current={pathname === "/blog" ? "page" : undefined}>Blog</a>
+          <a href="/faq" aria-current={pathname === "/faq" ? "page" : undefined}>FAQ</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <a class="button button-dark compact" href="/pricing">Get Started Free</a>
+      <a class="button button-outline compact" href="/contact">Contact Us</a>
+    </div>
+
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+    <div class="mobile-menu-inner shell">
+      {links.map(([label, href]) => (
+        <a href={href} aria-current={pathname === href ? "page" : undefined} class:list={["mobile-nav-link", { active: active(href) }]}>{label}</a>
+      ))}
+      <a href="/blog" aria-current={pathname === "/blog" ? "page" : undefined} class:list={["mobile-nav-link", { active: pathname.startsWith("/blog") }]}>Blog</a>
+      <a href="/faq" aria-current={pathname === "/faq" ? "page" : undefined} class:list={["mobile-nav-link", { active: pathname === "/faq" }]}>FAQ</a>
+      <div class="mobile-menu-actions">
+        <a class="button button-dark" href="/pricing">Get Started Free</a>
+        <a class="button button-outline" href="/contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="site-header-spacer" aria-hidden="true"></div>

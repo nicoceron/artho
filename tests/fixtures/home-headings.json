@@ -1,0 +1,1951 @@
+{
+  "source": "standalone.html#reconstruction-evidence",
+  "sourceSha256BeforeEvidence": "e9d889ecf089bffeebd983631f897300bd8de13e09ba2d8066e0b47a48e3e3bd",
+  "geometryToleranceCssPixels": 2,
+  "captures": [
+    {
+      "viewport": {
+        "name": "width-320",
+        "width": 320,
+        "height": 844,
+        "source": "coverage",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 260,
+            "height": 163.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1349.06,
+            "width": 280,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3583.14,
+            "width": 280,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 6302.45,
+            "width": 240,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7691.33,
+            "width": 280,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 10372.23,
+            "width": 280,
+            "height": 153.63
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12722.23,
+            "width": 260,
+            "height": 86.39
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-350-below",
+        "width": 349,
+        "height": 844,
+        "source": "breakpoint-below",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 289,
+            "height": 163.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1345.48,
+            "width": 309,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3557.16,
+            "width": 309,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 6143.66,
+            "width": 269,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7510.13,
+            "width": 309,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 10123.81,
+            "width": 309,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12417.64,
+            "width": 289,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-350",
+        "width": 350,
+        "height": 844,
+        "source": "breakpoint",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 290,
+            "height": 163.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1346.23,
+            "width": 310,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3557.91,
+            "width": 310,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 6122,
+            "width": 270,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7488.47,
+            "width": 310,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 10102.16,
+            "width": 310,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12397.11,
+            "width": 290,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-350-above",
+        "width": 351,
+        "height": 844,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 291,
+            "height": 163.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1346.98,
+            "width": 311,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3558.66,
+            "width": 311,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 6122.75,
+            "width": 271,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7489.22,
+            "width": 311,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 10102.91,
+            "width": 311,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12398.98,
+            "width": 291,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "width-360",
+        "width": 360,
+        "height": 844,
+        "source": "coverage",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 300,
+            "height": 163.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1353.69,
+            "width": 320,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3484.95,
+            "width": 320,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 6049.05,
+            "width": 280,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7415.52,
+            "width": 320,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9986.02,
+            "width": 320,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12267.02,
+            "width": 300,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-375-below",
+        "width": 374,
+        "height": 844,
+        "source": "breakpoint-below",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 314,
+            "height": 122.39
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1323.33,
+            "width": 334,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3432.19,
+            "width": 334,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5996.28,
+            "width": 294,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7322.75,
+            "width": 334,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9766.03,
+            "width": 334,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12015.17,
+            "width": 314,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-375",
+        "width": 375,
+        "height": 844,
+        "source": "breakpoint",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 315,
+            "height": 122.39
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1324.08,
+            "width": 335,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3432.94,
+            "width": 335,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5997.03,
+            "width": 295,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7323.5,
+            "width": 335,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9766.78,
+            "width": 335,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12017.05,
+            "width": 315,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-375-above",
+        "width": 376,
+        "height": 844,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 316,
+            "height": 122.39
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1324.83,
+            "width": 336,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3433.69,
+            "width": 336,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5997.78,
+            "width": 296,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7324.25,
+            "width": 336,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9767.53,
+            "width": 336,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 12018.92,
+            "width": 316,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844,
+        "source": "required",
+        "core": true
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 330,
+            "height": 122.39
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1270.06,
+            "width": 350,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3378.92,
+            "width": 350,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5943.02,
+            "width": 310,
+            "height": 57.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 7247.08,
+            "width": 350,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9667.95,
+            "width": 350,
+            "height": 115.22
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11888.31,
+            "width": 330,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-500-below",
+        "width": 499,
+        "height": 1080,
+        "source": "breakpoint-below",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 439,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1285.36,
+            "width": 459,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3304.59,
+            "width": 459,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5695.84,
+            "width": 419,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 6903.89,
+            "width": 459,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9235.14,
+            "width": 459,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11416.55,
+            "width": 439,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-500",
+        "width": 500,
+        "height": 1080,
+        "source": "breakpoint",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 440,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1286.11,
+            "width": 460,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3305.34,
+            "width": 460,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5696.59,
+            "width": 420,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 6904.64,
+            "width": 460,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9235.89,
+            "width": 460,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11418.42,
+            "width": 440,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-500-above",
+        "width": 501,
+        "height": 1080,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 441,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 20,
+            "y": 1286.86,
+            "width": 461,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3306.09,
+            "width": 461,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5697.34,
+            "width": 421,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 20,
+            "y": 6905.39,
+            "width": 461,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9236.64,
+            "width": 461,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11420.3,
+            "width": 441,
+            "height": 57.59
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-700-below",
+        "width": 699,
+        "height": 1080,
+        "source": "breakpoint-below",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 639,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 99.5,
+            "y": 1369.33,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3388.56,
+            "width": 659,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5779.81,
+            "width": 619,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 99.5,
+            "y": 6965.45,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9274.3,
+            "width": 659,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11557.58,
+            "width": 639,
+            "height": 28.8
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-700",
+        "width": 700,
+        "height": 1080,
+        "source": "breakpoint",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 640,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 100,
+            "y": 1370.08,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3389.31,
+            "width": 660,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5780.56,
+            "width": 620,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 100,
+            "y": 6966.2,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9275.05,
+            "width": 660,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11559.45,
+            "width": 640,
+            "height": 28.8
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-700-above",
+        "width": 701,
+        "height": 1080,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 30,
+            "y": 185.59,
+            "width": 641,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 100.5,
+            "y": 1370.81,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3390.05,
+            "width": 661,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5781.3,
+            "width": 621,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 100.5,
+            "y": 6966.94,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9275.78,
+            "width": 661,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11561.31,
+            "width": 641,
+            "height": 28.8
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-809-below",
+        "width": 808,
+        "height": 1080,
+        "source": "breakpoint-below",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 54,
+            "y": 185.59,
+            "width": 700,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 154,
+            "y": 1450.63,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3425.05,
+            "width": 768,
+            "height": 38.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5710.67,
+            "width": 728,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 154,
+            "y": 6873.91,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9160.34,
+            "width": 768,
+            "height": 38.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11527.89,
+            "width": 748,
+            "height": 28.8
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-809",
+        "width": 809,
+        "height": 1080,
+        "source": "breakpoint",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 54.5,
+            "y": 185.59,
+            "width": 700,
+            "height": 81.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 154.5,
+            "y": 1451.36,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 20,
+            "y": 3425.78,
+            "width": 769,
+            "height": 38.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 40,
+            "y": 5711.41,
+            "width": 729,
+            "height": 28.8
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 154.5,
+            "y": 6874.64,
+            "width": 500,
+            "height": 76.81
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 20,
+            "y": 9138.67,
+            "width": 769,
+            "height": 38.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 30,
+            "y": 11507.34,
+            "width": 749,
+            "height": 28.8
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "tablet",
+        "width": 810,
+        "height": 1080,
+        "source": "required",
+        "core": true
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 60,
+            "y": 195.59,
+            "width": 690,
+            "height": 115.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 155,
+            "y": 1413.98,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 30,
+            "y": 2729.81,
+            "width": 360,
+            "height": 129.61
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 60,
+            "y": 4358.47,
+            "width": 320,
+            "height": 62.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 155,
+            "y": 5167.34,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 30,
+            "y": 6090.22,
+            "width": 750,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 60,
+            "y": 7761.17,
+            "width": 320,
+            "height": 62.41
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-810-above",
+        "width": 811,
+        "height": 1080,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 60,
+            "y": 195.59,
+            "width": 691,
+            "height": 115.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 155.5,
+            "y": 1413.98,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 30,
+            "y": 2729.81,
+            "width": 360.5,
+            "height": 129.61
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 60,
+            "y": 4358.47,
+            "width": 320.5,
+            "height": 62.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 155.5,
+            "y": 5167.34,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 30,
+            "y": 6090.22,
+            "width": 751,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 60,
+            "y": 7761.45,
+            "width": 320.5,
+            "height": 62.41
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-1199-below",
+        "width": 1198,
+        "height": 900,
+        "source": "breakpoint-below",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 249,
+            "y": 195.59,
+            "width": 700,
+            "height": 115.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 349,
+            "y": 1413.98,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 30,
+            "y": 2707.41,
+            "width": 554,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 60,
+            "y": 4225.64,
+            "width": 514,
+            "height": 31.2
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 349,
+            "y": 4913.69,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 30,
+            "y": 5746.94,
+            "width": 1138,
+            "height": 43.2
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 60,
+            "y": 7411.02,
+            "width": 514,
+            "height": 62.41
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-1199",
+        "width": 1199,
+        "height": 900,
+        "source": "breakpoint",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 249.5,
+            "y": 195.59,
+            "width": 700,
+            "height": 115.19
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 349.5,
+            "y": 1413.98,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 30,
+            "y": 2707.41,
+            "width": 554.5,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 60,
+            "y": 4225.64,
+            "width": 514.5,
+            "height": 31.2
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 349.5,
+            "y": 4913.69,
+            "width": 500,
+            "height": 86.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 30,
+            "y": 5746.94,
+            "width": 1139,
+            "height": 43.2
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 60,
+            "y": 7411.3,
+            "width": 514.5,
+            "height": 62.41
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-1199-above",
+        "width": 1200,
+        "height": 900,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 250,
+            "y": 231.59,
+            "width": 700,
+            "height": 134.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 350,
+            "y": 1629.2,
+            "width": 500,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 40,
+            "y": 3057.42,
+            "width": 545,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 80,
+            "y": 4305.86,
+            "width": 470,
+            "height": 33.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 350,
+            "y": 5068.7,
+            "width": 500,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 40,
+            "y": 6051.11,
+            "width": 670,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 80,
+            "y": 7091.41,
+            "width": 490,
+            "height": 67.19
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "bp-1200-above",
+        "width": 1201,
+        "height": 900,
+        "source": "breakpoint-above",
+        "core": false
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 250.5,
+            "y": 231.59,
+            "width": 700,
+            "height": 134.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 350.5,
+            "y": 1629.2,
+            "width": 500,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 40,
+            "y": 3057.42,
+            "width": 545.5,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 80,
+            "y": 4305.86,
+            "width": 470.5,
+            "height": 33.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 350.5,
+            "y": 5068.7,
+            "width": 500,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 40,
+            "y": 6051.11,
+            "width": 671,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 80,
+            "y": 7091.55,
+            "width": 491,
+            "height": 67.19
+          }
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 900,
+        "source": "required",
+        "core": true
+      },
+      "headings": [
+        {
+          "tag": "h1",
+          "text": "Simplify Your Finances. Empower Your Business.",
+          "rect": {
+            "x": 370,
+            "y": 231.59,
+            "width": 700,
+            "height": 134.41
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Why Teams Trust Our Financial Software",
+          "rect": {
+            "x": 470,
+            "y": 1629.2,
+            "width": 500,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Powerful Features to Streamline Your Finances",
+          "rect": {
+            "x": 120,
+            "y": 3057.42,
+            "width": 585,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Take Control of Your Finances Now",
+          "rect": {
+            "x": 160,
+            "y": 4305.86,
+            "width": 510,
+            "height": 33.59
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Manage Your Finances in 4 Simple Steps",
+          "rect": {
+            "x": 470,
+            "y": 5046.3,
+            "width": 500,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h2",
+          "text": "Trusted by Teams Who Value Simplicity and Results",
+          "rect": {
+            "x": 120,
+            "y": 6028.7,
+            "width": 750,
+            "height": 96
+          }
+        },
+        {
+          "tag": "h4",
+          "text": "Ready to simplify how you handle your finances?",
+          "rect": {
+            "x": 160,
+            "y": 7055.05,
+            "width": 570,
+            "height": 67.19
+          }
+        }
+      ]
+    }
+  ]
+}

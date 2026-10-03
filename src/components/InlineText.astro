@@ -1,0 +1,5 @@
+---
+interface Props { runs: { text:string; bold:boolean; italic:boolean; break?:boolean }[] }
+const { runs } = Astro.props;
+---
+{runs.map(run => run.break ? <br /> : run.bold ? <strong>{run.italic ? <em>{run.text}</em> : run.text}</strong> : run.italic ? <em>{run.text}</em> : run.text)}

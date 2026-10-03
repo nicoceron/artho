@@ -1,0 +1,13 @@
+---
+import UiIcon from './UiIcon.astro';
+interface Props {
+  items: readonly string[];
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+---
+
+<ul class:list={["check-list", { compact }]}>
+  {items.map((item) => <li><span aria-hidden="true"><UiIcon name="check" size={12} /></span>{item}</li>)}
+</ul>

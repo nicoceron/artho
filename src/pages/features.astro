@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import FeatureDetails from "../components/FeatureDetails.astro";
+import Workflow from "../components/Workflow.astro";
+import MainCta from "../components/MainCta.astro";
+---
+
+<BaseLayout>
+  <PageHero pageClass="features-hero" compact breadcrumb="Features" title="Empowering Modern Businesses to Master Their Finances" description="We believe financial clarity should be simple, powerful, and accessible for every team." />
+  <FeatureDetails />
+  <Workflow />
+  <MainCta />
+</BaseLayout>

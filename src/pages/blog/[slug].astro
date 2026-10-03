@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogArticle from "../../components/BlogArticle.astro";
+import articles from "../../data/articles.json";
+
+export function getStaticPaths() {
+  return articles.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+
+const { article } = Astro.props;
+---
+
+<BaseLayout title={`${article.title} - My Framer Site`}>
+  <BlogArticle article={article} />
+</BaseLayout>

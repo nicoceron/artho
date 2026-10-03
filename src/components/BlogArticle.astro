@@ -1,0 +1,47 @@
+---
+import articles from "../data/articles.json";
+import BlogCard from "./BlogCard.astro";
+import InlineText from './InlineText.astro';
+import { responsiveImage } from "../data/responsive-images";
+
+type Article = (typeof articles)[number];
+interface Props { article: Article }
+const { article } = Astro.props;
+const relatedBySlug: Record<string, string[]> = {
+  "the-art-of-effective-communication-in-the-workplace": ["mastering-time-management-tips-for-busy-professionals", "digital-transformation-navigating-the-new-normal"],
+  "strategies-for-building-a-resilient-business": ["the-importance-of-diversity-and-inclusion-in-today-s-workplace", "the-power-of-emotional-intelligence-in-leadership"],
+  "mastering-time-management-tips-for-busy-professionals": ["the-art-of-effective-communication-in-the-workplace", "digital-transformation-navigating-the-new-normal"],
+  "the-future-of-ai-opportunities-and-challenges": ["innovative-marketing-strategies-for-small-businesses", "unlocking-the-secrets-of-successful-remote-teams"],
+  "the-power-of-emotional-intelligence-in-leadership": ["the-importance-of-diversity-and-inclusion-in-today-s-workplace", "strategies-for-building-a-resilient-business"],
+  "digital-transformation-navigating-the-new-normal": ["mastering-time-management-tips-for-busy-professionals", "the-art-of-effective-communication-in-the-workplace"],
+  "the-importance-of-diversity-and-inclusion-in-today-s-workplace": ["strategies-for-building-a-resilient-business", "the-power-of-emotional-intelligence-in-leadership"],
+  "unlocking-the-secrets-of-successful-remote-teams": ["innovative-marketing-strategies-for-small-businesses", "the-future-of-ai-opportunities-and-challenges"],
+  "innovative-marketing-strategies-for-small-businesses": ["the-future-of-ai-opportunities-and-challenges", "unlocking-the-secrets-of-successful-remote-teams"],
+};
+const relatedSlugs = relatedBySlug[article.slug] ?? [];
+const related = relatedSlugs.map((slug) => articles.find((item) => item.slug === slug)).filter(Boolean) as Article[];
+---
+
+<article class="article-page">
+  <div class="article-shell shell">
+    <p class="breadcrumb article-breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog">Resources</a><span>/</span><span class="breadcrumb-title">{article.title}</span></p>
+    <header class="article-header">
+      <h1>{article.title}</h1>
+      <div class="article-meta"><span>{article.category}</span><time>{article.date}</time></div>
+      <img {...responsiveImage(article.image)} sizes="(min-width: 1200px) 1000px, (min-width: 810px) calc(100vw - 60px), calc(100vw - 40px)" alt="" />
+    </header>
+    <div class="article-body">
+      {article.blocks.map((block) => {
+        if (block.type === "heading") return block.tag === 'h4' ? <h4>{block.text}</h4> : <h3>{block.text}</h3>;
+        if (block.type === "listItem") return <div class="article-list-item"><span>{block.marker}</span><p><InlineText runs={block.runs} /></p></div>;
+        return <p><InlineText runs={block.runs} /></p>;
+      })}
+    </div>
+  </div>
+  <section class="related-posts section-pad">
+    <div class="shell">
+      <div class="related-heading"><h2>You Might Also Like</h2><p>Explore more insights and guides to help you simplify, scale, and succeed in your financial journey.</p></div>
+      <div class="blog-grid related-grid">{related.map((item) => <BlogCard article={item} />)}</div>
+    </div>
+  </section>
+</article>

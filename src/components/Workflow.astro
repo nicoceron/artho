@@ -1,0 +1,61 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import AccountPreview from './AccountPreview.astro';
+import MotionScene from './MotionScene.astro';
+import { image, workflowSteps } from "../data/site";
+import responsiveSources from "../data/responsive-image-sources.json";
+import { responsiveImage } from "../data/responsive-images";
+
+const dashboard = responsiveImage(image(responsiveSources.workflowDashboard));
+const dashboardSizes = "(min-width: 1200px) 529px, (min-width: 810px) calc((100vw - 30px) * 1.15), calc((100vw - 40px) * 1.15)";
+---
+
+<section class="workflow-section section-pad">
+  <div class="shell">
+    <SectionHeader eyebrow="How It Works" title="Manage Your Finances in 4 Simple Steps" description="It’s quick and easy to get started. Follow these four steps to simplify and optimize your financial management." />
+    <div class="workflow-tabs" data-tabs data-reveal>
+      <div class="workflow-list" role="tablist" aria-label="Setup steps" aria-orientation="vertical">
+        {workflowSteps.map((step, index) => (
+          <button id={`step-tab-${index + 1}`} role="tab" aria-selected={index === 0 ? "true" : "false"} aria-controls={`step-panel-${index + 1}`} tabindex={index === 0 ? 0 : -1} data-tab={step.panel} type="button">
+            <span class="workflow-step-label"><span>Step</span><span class="step-number">{step.number}</span></span>
+            <span class="workflow-step-copy"><b>{step.title}</b><small>{step.description}</small></span>
+          </button>
+        ))}
+      </div>
+      <div class="workflow-panels">
+        <div id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" tabindex="0" data-panel="signup" data-motion-panel class="workflow-panel signup-panel">
+          <div class="workflow-preview-stage" role="img" aria-label="Illustration of an account sign-up form"><AccountPreview /></div>
+        </div>
+        <div id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" tabindex="0" data-panel="card" data-motion-panel class="workflow-panel" hidden>
+          <div class="workflow-preview-stage" role="img" aria-label="Illustration of adding a payment card"><AccountPreview variant="card" /></div>
+        </div>
+        <div id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" tabindex="0" data-panel="dashboard" data-motion-panel class="workflow-panel" hidden>
+          <div class="workflow-preview-stage"><div class="workflow-dashboard"><img {...dashboard} sizes={dashboardSizes} alt="Real-time financial dashboard" /></div></div>
+        </div>
+        <div id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" data-panel="insights" data-motion-panel class="workflow-panel" hidden>
+          <div class="workflow-preview-stage"><MotionScene scene="analytics" context="workflow" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="workflow-mobile" data-reveal>
+      <article class="workflow-mobile-step">
+        <div class="workflow-mobile-head"><span class="workflow-step-label"><span class="step-number">01</span></span><span class="workflow-step-copy"><b>Create Your Account</b><small>Sign up in minutes with a simple, guided setup—no complicated forms or extra steps.</small></span></div>
+        <div class="workflow-mobile-panel">
+          <div class="workflow-preview-stage" role="img" aria-label="Illustration of an account sign-up form"><AccountPreview /></div>
+        </div>
+      </article>
+      <article class="workflow-mobile-step">
+        <div class="workflow-mobile-head"><span class="workflow-step-label"><span class="step-number">02</span></span><span class="workflow-step-copy"><b>Connect Your Financial Tools</b><small>Securely link your bank accounts, payment platforms, and favorite apps for automatic syncing.</small></span></div>
+        <div class="workflow-mobile-panel"><div class="workflow-preview-stage" role="img" aria-label="Illustration of adding a payment card"><AccountPreview variant="card" /></div></div>
+      </article>
+      <article class="workflow-mobile-step">
+        <div class="workflow-mobile-head"><span class="workflow-step-label"><span class="step-number">03</span></span><span class="workflow-step-copy"><b>Track & Manage Effortlessly</b><small>Monitor transactions, invoices, budgets, and expenses from one simple, real-time dashboard.</small></span></div>
+        <div class="workflow-mobile-panel"><div class="workflow-preview-stage"><div class="workflow-dashboard"><img {...dashboard} sizes={dashboardSizes} alt="Real-time financial dashboard" /></div></div></div>
+      </article>
+      <article class="workflow-mobile-step">
+        <div class="workflow-mobile-head"><span class="workflow-step-label"><span class="step-number">04</span></span><span class="workflow-step-copy"><b>Get Smart Financial Insights</b><small>Access real-time reports and personalized analytics to make smarter, faster business decisions.</small></span></div>
+        <div class="workflow-mobile-panel"><div class="workflow-preview-stage"><MotionScene scene="analytics" context="workflow" /></div></div>
+      </article>
+    </div>
+  </div>
+</section>

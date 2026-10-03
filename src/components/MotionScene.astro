@@ -1,0 +1,185 @@
+---
+import { image } from "../data/site";
+
+interface Props {
+  scene: "simple" | "accuracy" | "security" | "overview" | "billing" | "analytics" | "budget" | "integrations";
+  context?: 'feature' | 'workflow';
+}
+
+const { scene, context = 'feature' } = Astro.props;
+
+const overviewFrames = [
+  "vJYxHCfKAKRUlK9fuOJIkhTdQ.png",
+  "QGGnOpCVH61zwnUFlIS1pRElJs.png",
+  "d93U5p8ltofl5PSJQkUSS4eBQCo.png",
+];
+const billingFrames = [
+  "ghc2cEELBUpeN3m8emhYgieZk.png",
+  "crniL1wF0hF21oWuxYAhEAxRtcM.png",
+  "V72Fh98CLIS8hNRPRJpeNzSF6E0.png",
+  "v41wgD5yj4maHRS1FxGOvmxpdc.png",
+];
+const accuracyFrames = [
+  "yT2ei2orOQ46TTHQue2bufkBZ8.png",
+  "7DCOIE36cTcsKJbtuEqTawgXZy8.png",
+  "FwFraRQuHWqTShM7v3IiqVjsuA.png",
+  "W0E59M5zOjZeHo2vy2ky0uFlwM.png",
+];
+const budgetFrames = [
+  "K7WhhjhYTPAnpt65TmWWYg6XHk.png",
+  "gBcrOqPULQjPYRWVvmT9rJycuk.png",
+  "iDGIoLq3cdnKCDDO6RTf8x1TGw.png",
+];
+const integrationMarks = [
+  "i4kzQ1DLpTutyq95f0eXB5jHKZ4.svg",
+  "ArRIDmNKPBanN33bRUDRFgIXs.svg",
+  "Xm8JFTAIcwYtTVxm1sv4Z3JZU.svg",
+  "WzElv7JCSKjpHDmEi3UW1dgOsE.svg",
+  "E83G1yMci4KGqrObe9kF6FHJkVM.svg",
+  "2YbXAi0UsNmrDnjUUy0h9a0QM.svg",
+  "xAxt4Qmz1LKnOXUaH1pgUQJBY8.svg",
+  "pEeYERluVPpdzuovGexeI5W7NI.svg",
+];
+
+const frameDelays: Record<Props["scene"], string> = {
+  simple: "500,500",
+  accuracy: "500,500,500",
+  security: "500,500,500,500,800,800,500,500",
+  overview: "500,500",
+  billing: "500,500,500,500,500",
+  analytics: "800,800,500",
+  budget: "500,500,1000,500,500,500",
+  integrations: "500,500",
+};
+---
+
+<div
+  class:list={["motion-scene", `motion-scene-${scene}`]}
+  data-motion-sequence={context === 'feature' ? true : undefined}
+  data-workflow-analytics={context === 'workflow' ? true : undefined}
+  data-workflow-step={context === 'workflow' ? '0' : undefined}
+  data-motion-name={scene}
+  data-motion-delays={context === 'workflow' ? '1000,1000,1000,1000,1000,1000' : frameDelays[scene]}
+  data-motion-step="0"
+  tabindex="0"
+  role="group"
+  aria-label={`${scene} interactive product preview`}
+>
+  {scene === "simple" && (
+    <img class="scene-dashboard scene-dashboard-main" src={image("QSkLnJSuSnRK9rXOsrSn26Ejs.png")} alt="Financial dashboard" />
+  )}
+
+  {scene === "accuracy" && (
+    <div class="accuracy-stage">
+      <div class="accuracy-track">
+        {accuracyFrames.map((asset) => <img src={image(asset)} alt="Live financial dashboard view" />)}
+      </div>
+    </div>
+  )}
+
+  {scene === "security" && (
+    <div class="security-stage">
+      <img class="security-grid" src={image("2nvq2TTSwMyjS9FpY4vxdCHgdFI.svg")} alt="" />
+      <img class="security-settings" src={image("gDxgpiL0dGDMCJi0fQczI51Ons.svg")} alt="Account security settings" />
+      <div class="security-rail" aria-hidden="true">
+        <img class="security-person" src={image("VKW7AWRna4bKkm72oWIthi8UmI0.jpg")} alt="" />
+        <span class="security-lock">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 10V7.5a4.5 4.5 0 0 1 8.55-1.95M6 10h12v10H6zM12 14v2.5" /></svg>
+        </span>
+        <img class="security-user-badge" src={image("TP96gL3ExzrkOX9XZILD0UulNHs.svg")} alt="" />
+      </div>
+      <div class="security-login" aria-hidden="true">
+        <div class="security-login-head">
+          <img src={image("TP96gL3ExzrkOX9XZILD0UulNHs.svg")} alt="" />
+          <div><b>Login to your account</b><span>Enter your details to login.</span></div>
+        </div>
+        <i class="security-divider"></i>
+        <div class="security-fields">
+          <label>Email Address* <span class="security-input security-email"><i>✉</i><em>your@email.com</em></span></label>
+          <label>Password* <span class="security-input security-password"><i>♙</i><em>••••••••••</em></span></label>
+        </div>
+        <div class="security-action"><span><i>✓</i> Keep me logged in</span><u>Forgot password?</u></div>
+        <button class="security-submit" type="button" tabindex="-1">Login</button>
+      </div>
+    </div>
+  )}
+
+  {scene === "overview" && (
+    <div class="overview-stage">
+      {overviewFrames.map((asset, index) => <img src={image(asset)} alt="" data-motion-frame={index} />)}
+    </div>
+  )}
+
+  {scene === "billing" && (
+    <div class="billing-stage">
+      <div class="billing-list">
+        {billingFrames.slice(1).map((asset, index) => <img src={image(asset)} alt="" data-motion-frame={index} />)}
+      </div>
+      <img class="billing-my-cards" src={image(billingFrames[0])} alt="My cards and recent transactions" />
+    </div>
+  )}
+
+  {scene === "analytics" && (
+    <div class="analytics-stage">
+      <div class="analytics-stack">
+        <div class="analytics-score-card">
+          <div class="analytics-card-head">
+            <span class="analytics-head-title">
+              <svg viewBox="0 0 18 15" aria-hidden="true"><path d="M1 12.5a8 8 0 1 1 16 0M9 10l3.8-4" /><circle cx="9" cy="10" r="1" /></svg>
+              Credit Score
+            </span>
+            <span class="analytics-head-button">Details</span>
+          </div>
+          <i class="analytics-divider"></i>
+          <div class="analytics-score-details">
+            <div>
+              <span>Your credit score is <b><i class="score-zero">0</i><i class="score-value">710</i></b></span>
+              <small>This score is considered to be Excellent.</small>
+            </div>
+            <span class="analytics-score-icon" aria-hidden="true">😎</span>
+          </div>
+          <div class="score-bars">{Array.from({ length: 36 }).map((_, index) => <i class:list={{ muted: index >= 26 }}></i>)}</div>
+        </div>
+        <div class="analytics-expense-card">
+          <div class="analytics-card-head">
+            <span class="analytics-head-title">
+              <svg viewBox="0 0 17 15" aria-hidden="true"><path d="M1 1h15v13H1zM4 10V7m4 3V4m4 6V6" /></svg>
+              Major Expenses
+            </span>
+            <span class="analytics-head-button analytics-weekly">Weekly <svg viewBox="0 0 8 5" aria-hidden="true"><path d="m1 1 3 3 3-3" /></svg></span>
+          </div>
+          <i class="analytics-divider"></i>
+          <div class="analytics-chart">
+            <div class="analytics-y-axis"><span>Housing</span><span>Utilities</span><span>Food</span></div>
+            <div class="analytics-plot">
+              <div class="analytics-grid" aria-hidden="true">{Array.from({ length: 6 }).map(() => <i></i>)}</div>
+              <div class="analytics-bars" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="analytics-x-axis"><span>0</span><span>2K</span><span>4K</span><span>6K</span><span>8K</span><span>10K</span></div>
+            </div>
+          </div>
+        </div>
+        <img class="analytics-balance-card" src={image("d93U5p8ltofl5PSJQkUSS4eBQCo.png")} alt="Total balance overview" />
+      </div>
+    </div>
+  )}
+
+  {scene === "budget" && (
+    <div class="budget-stage">
+      {budgetFrames.map((asset, index) => <img src={image(asset)} alt="" data-motion-frame={index} />)}
+    </div>
+  )}
+
+  {scene === "integrations" && (
+    <div class="integration-stage">
+      <div class="integration-group">
+        <div class="integration-center"><img src={image("fnfmuCs2peEKsqmyIDNjoIjUCvQ.svg")} alt="Artho" /></div>
+        <svg class="integration-swap" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M7 11h18m-4-4 4 4-4 4M25 21H7m4 4-4-4 4-4" />
+        </svg>
+        <div class="integration-orbit">
+          {integrationMarks.map((asset) => <span><img src={image(asset)} alt="" /></span>)}
+        </div>
+      </div>
+    </div>
+  )}
+</div>

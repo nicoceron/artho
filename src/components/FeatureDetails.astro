@@ -1,0 +1,28 @@
+---
+import Badge from './Badge.astro';
+import UiIcon from './UiIcon.astro';
+import { financeFeatures } from "../data/site";
+import { responsiveImage } from "../data/responsive-images";
+---
+
+<section class="feature-details section-pad">
+  <div class="shell feature-detail-list">
+    {financeFeatures.map((feature, index) => (
+      <article class:list={["feature-detail", { reverse: index % 2 === 1 }]}>
+        <div class="feature-detail-media">
+          <img {...responsiveImage(feature.image)} sizes="(min-width: 1200px) 575px, (min-width: 810px) calc(100vw - 60px), calc(100vw - 40px)" alt="" />
+        </div>
+        <div class="feature-detail-copy">
+          <Badge label={feature.eyebrow} />
+          <h2>{feature.title}</h2>
+          <p class="lead">{feature.description}</p>
+          <ul>
+            {feature.points.map(([title, description]) => (
+              <li><span aria-hidden="true"><UiIcon name="check" size={18} /></span><div><b>{title}</b><p>{description}</p></div></li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

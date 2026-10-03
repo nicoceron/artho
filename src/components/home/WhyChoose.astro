@@ -1,0 +1,57 @@
+---
+import SectionHeader from "../SectionHeader.astro";
+import MotionScene from "../MotionScene.astro";
+
+const cards = [
+  {
+    title: "Simple & Intuitive",
+    subtitle: "Easy to set up and use from day one.",
+    label: "User-Friendly Interface",
+    text: "Clean, organized layout that makes managing finances effortless—no training required.",
+    scene: "simple",
+    tone: "mint",
+  },
+  {
+    title: "Real-Time Accuracy",
+    subtitle: "Instant financial tracking at your fingertips.",
+    label: "Live Data Sync",
+    text: "Real-time updates across dashboards, reports, and all connected devices for always-accurate insights.",
+    scene: "accuracy",
+    tone: "blue",
+  },
+  {
+    title: "Secure & Reliable",
+    subtitle: "Your financial data is always safe.",
+    label: "Enterprise-Grade Security",
+    text: "Protected by advanced encryption, secure cloud storage, and reliable uptime you can count on.",
+    scene: "security",
+    tone: "cream",
+  },
+] as const;
+---
+
+<section class="why-section section-pad">
+  <div class="shell">
+    <SectionHeader eyebrow="Why Choose Us" title="Why Teams Trust Our Financial Software" description="We combine powerful features with effortless usability to help you take control of your finances and grow with confidence." />
+    <div class="why-grid">
+      {cards.map((card, index) => (
+        <article class:list={["why-card", card.tone, { featured: index === 0 }]} data-motion-card>
+          <div class="why-copy">
+            <div class="why-primary">
+              <span class="number-badge" aria-hidden="true">
+                {card.scene === "simple" && <svg viewBox="0 0 20 20"><path d="M3 3h14v14H3zM3 7h14M7 7v10" /></svg>}
+                {card.scene === "accuracy" && <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3"/><path d="m10 10 6-6" /></svg>}
+                {card.scene === "security" && <svg viewBox="0 0 20 20"><path d="M6 16c-1-5 1-10 4-10s5 5 4 10M8 17c-1-4 0-8 2-8s3 4 2 8M10 12v5M5 12c0-5 2-8 5-8s5 3 5 8" /></svg>}
+              </span>
+              <div><h3>{card.title}</h3><p>{card.subtitle}</p></div>
+            </div>
+            <div class="why-details"><h4>{card.label}</h4><p>{card.text}</p></div>
+          </div>
+          <div class="why-visual">
+            <MotionScene scene={card.scene} />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

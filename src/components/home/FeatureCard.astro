@@ -1,0 +1,14 @@
+---
+import MotionScene from '../MotionScene.astro';
+interface Props {
+  index:number;
+  title:string;
+  description:string;
+  scene:'overview' | 'billing' | 'analytics' | 'budget' | 'integrations';
+}
+const { index,title,description,scene } = Astro.props;
+---
+<article class:list={['feature-card', `feature-${index}`]} data-motion-card>
+  <div class="feature-media"><MotionScene scene={scene} /></div>
+  <div class="feature-card-copy"><h3>{title}</h3><p>{description}</p></div>
+</article>
